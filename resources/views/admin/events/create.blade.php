@@ -5,7 +5,16 @@
 @endsection
 
 @section('head')
-
+<style>
+.dropzone {
+    border: 2px dashed #0087F7;
+    border-radius: 5px;
+    background: white;
+    min-height: 400px;
+    padding: 10%;
+    font-size: 2rem
+}
+</style>
 @endsection
 
 @section('content')
@@ -16,7 +25,7 @@
                 </div>
                 <div class="row">
 
-                      <form id="validatore" method="post" action="/events" class="form-horizontal dropzone" enctype="multipart/form-data">
+                      <form id="eventsvalidator" method="post" action="/events" class="form-horizontal" >
                             {{ csrf_field() }}
                             <fieldset class="col-md-12" style="border: 1px solid #6b6b6b; padding: 10px" id="fieldsetp_1">
                               <div class="col-md-6">
@@ -92,9 +101,12 @@
                                   </div>
                               </div>
                               </div>
+                              </form>
                               <div class="col-md-6">
                                 <label class="control-label" >Locandina </label>
-                                <div class="dropzone-previews" id="locandina_1" name="locandina_1"></div>
+                                <form action="/locandina-upload" class="dropzone"  id="locandina-1">
+                                  {{ csrf_field() }}
+                                </form>
                               </div>
 
                             </fieldset>
@@ -105,7 +117,7 @@
                             <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-check-circle" aria-hidden="true"></i> Salva</button>
                           </div>
 
-                      </form>
+
 
 
                 </div>
@@ -115,14 +127,18 @@
 
 
 @section('scripts')
-
+<script src="{{ asset('js/dropzone.js') }}"></script>
 <script>
 $(function(){
 
+    Dropzone.options.locandina1 = {
+    paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    uploadMultiple: false
+  };
+
   //clona il pannello di input riaggiornando gli id e i name
   $('button#addfieldsetbtn').on('click', function(e) {
-
-        $('div#foglipan_1').fadeOut();
 
         e.preventDefault();
         var fieldset_last = $('fieldset:last');
@@ -155,7 +171,7 @@ $(function(){
         clonefield.find("input[id^='tempoStopDef_']").prop('id', 'tempoStopDef_'+curr_fieldset_index ).prop('name', 'tempoStopDef_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='visualizzaOgni_']").prop('id', 'visualizzaOgni_'+curr_fieldset_index ).prop('name', 'visualizzaOgni_'+curr_fieldset_index ).val('');
         // locandina
-        clonefield.find("input[id^='locandina_']").prop('id', 'locandina_'+curr_fieldset_index ).prop('name', 'locandina_'+curr_fieldset_index ).val('');
+        clonefield.find("div[id^='locandina_']").prop('id', 'locandina_'+curr_fieldset_index );
 
         clonefield.find('button.removepanelbtn').remove();
 
@@ -165,10 +181,6 @@ $(function(){
 
         $('button.removepanelbtn').on('click', function(e) {
             $(this).parent('div.form-group').parent('fieldset').remove();
-            var panelfieldset_n = $('fieldset').length;
-            if(panelfieldset_n === 1){
-              $('div#foglipan_1').fadeIn();
-            }
         });
 
         // reinitialize jscolor
@@ -180,7 +192,7 @@ $(function(){
   });
 
 /*
-  $('#validatore').on('submit', function(e) {
+  $('#eventsvalidator').on('submit', function(e) {
 
       e.preventDefault();
 
@@ -212,7 +224,7 @@ $(function(){
       //console.log(stringone_dati_complessivo);
 
 
-      $('#validatore').find('submit').hide();
+      $('#eventsvalidator').find('submit').hide();
       $('.loading').show();
       var data = {
           stringone_dati: stringone_dati_complessivo,
@@ -231,7 +243,7 @@ $(function(){
           success: function(data){
               // $('#risultato').append(data['result']);
               $('.loading').hide();
-              $('#validatore').closest('.row').hide();
+              $('#eventsvalidator').closest('.row').hide();
               $("#risultato>.panel-body").html(data.result_debug);
               if(data.error == true)
                   $("#risultato>.panel-heading").html("ERRORE: -- Alcuni campi non sono corretti  -- I dati non sono stati inseriti sul DB").css('background-color','red');
@@ -242,7 +254,7 @@ $(function(){
           error: function(xhr,status,error){
               var msg = "Si è verificato un errore: ";
               $('.loading').hide();
-              $('#validatore').closest('.row').hide();
+              $('#eventsvalidator').closest('.row').hide();
               $("#risultato>.panel-heading").html("ERRORE").css('background-color','red');
               $( "#risultato>.panel-body" ).html( msg + status.error + ' - ' + error);
               $('#back').show();

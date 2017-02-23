@@ -23,3 +23,5 @@ Route::post('/events', 'EventController@store');
 
 Route::get('/settings/edit', 'SettingsController@edit');
 Route::patch('/events', 'SettingsController@update');
+
+Route::post('/locandina-upload', 'UploadController@store');
