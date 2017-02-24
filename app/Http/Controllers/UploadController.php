@@ -15,7 +15,11 @@ class UploadController extends Controller {
 
 	public function store(Request $request)
 	{
-		return "";
+		$name = $_FILES['myfile']['name'];
+		$size = $_FILES['myfile']['size'];
+		$path = public_path()."\upload";
+		move_uploaded_file( $name , $path."\".$name );
+		return response()->json(  array("msg" => "Upload effettuato con successo.", "data" => $name) );
 	}
 
 

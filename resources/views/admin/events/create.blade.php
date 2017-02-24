@@ -5,16 +5,8 @@
 @endsection
 
 @section('head')
-<style>
-.dropzone {
-    border: 2px dashed #0087F7;
-    border-radius: 5px;
-    background: white;
-    min-height: 400px;
-    padding: 10%;
-    font-size: 2rem
-}
-</style>
+<link href="{{ asset('/js/jquery-upload-file-master/css/uploadfile.css') }}" rel="stylesheet">
+<meta name="_token" content="{{ csrf_token() }}">
 @endsection
 
 @section('content')
@@ -33,7 +25,7 @@
                                   <div class="col-md-5">
                                     <label class="control-label" >Data </label>
                                     <div class="form-group input-group">
-                                    <input style="margin-left: 15px" id="dataEvento_1" name="dataEvento_1" type="text" placeholder="gg-mm-yyyy" class="form-control " >
+                                    <input style="margin-left: 15px" id="dataEvento_1" name="dataEvento_1" type="text" placeholder="gg-mm-yyyy" class="form-control data_evento_c" >
                                     <span style="padding: 0" class="input-group-addon">
                                       <input class="form-control jscolor pull-right" id="colorData_1" type="text" name="colorData_1" value="b0f221" style="width: 80px">
                                     </span>
@@ -101,12 +93,10 @@
                                   </div>
                               </div>
                               </div>
-                              </form>
+
                               <div class="col-md-6">
                                 <label class="control-label" >Locandina </label>
-                                <form action="/locandina-upload" class="dropzone"  id="locandina-1">
-                                  {{ csrf_field() }}
-                                </form>
+                                <div id="fileuploader">Upload</div>
                               </div>
 
                             </fieldset>
@@ -116,10 +106,7 @@
                             <button type="button" id="addfieldsetbtn" class="btn btn-success btn-lg"><i class="fa fa-plus-circle" aria-hidden="true"></i> Aggiungi </button>
                             <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-check-circle" aria-hidden="true"></i> Salva</button>
                           </div>
-
-
-
-
+                      </form>
                 </div>
 
 
@@ -127,15 +114,25 @@
 
 
 @section('scripts')
-<script src="{{ asset('js/dropzone.js') }}"></script>
+<script src="{{ asset('/js/jquery-upload-file-master/js/jquery.uploadfile.min.js') }} "></script>
 <script>
+
 $(function(){
 
-    Dropzone.options.locandina1 = {
-    paramName: "file", // The name that will be used to transfer the file
-    maxFilesize: 2, // MB
-    uploadMultiple: false
-  };
+  var token = $('meta[name="_token"]').attr('content');
+  $( "#fileuploader" ).uploadFile({
+      url: '/locandina-upload',
+      multiple:false,
+      fileName:'myfile',
+      formData: {"_token": token},
+      allowedTypes: "jpg,png,gif",
+      extErrorStr: "file non consentito.",
+      onSuccess:function(files,data,xhr)
+      {
+          alert(data['msg']);
+          $("#file").val(data['data']);
+      }
+  });
 
   //clona il pannello di input riaggiornando gli id e i name
   $('button#addfieldsetbtn').on('click', function(e) {
@@ -187,7 +184,7 @@ $(function(){
         jscolor.installByClassName("jscolor");
   });
 
-  $( "#data_evento" ).datepicker({
+  $( "input.data_evento_c" ).datepicker({
       dateFormat: "dd-mm-yy"
   });
 
