@@ -4,6 +4,8 @@ use Carbon\Carbon;
 use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
+use Storage;
+use Illuminate\Support\Facades\Input;
 
 
 class UploadController extends Controller {
@@ -16,10 +18,10 @@ class UploadController extends Controller {
 	public function store(Request $request)
 	{
 		$name = $_FILES['myfile']['name'];
-		$size = $_FILES['myfile']['size'];
-		$path = public_path()."\upload";
-		move_uploaded_file( $name , $path."\".$name );
-		return response()->json(  array("msg" => "Upload effettuato con successo.", "data" => $name) );
+		$file = $request->file('myfile')->getRealPath();
+		Storage::disk('uploads')->put($name, file_get_contents($file));
+		$locandina_id = $request->locandina_id;
+		return response()->json(["msg" => "Upload effettuato con successo.", "data" => $name, "locandina_id" => $locandina_id]);
 	}
 
 

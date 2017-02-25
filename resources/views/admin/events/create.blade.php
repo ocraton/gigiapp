@@ -97,6 +97,7 @@
                               <div class="col-md-6">
                                 <label class="control-label" >Locandina </label>
                                 <div id="fileuploader">Upload</div>
+                                <input type="hidden" name="locandina_1" id="locandina_1">
                               </div>
 
                             </fieldset>
@@ -124,13 +125,13 @@ $(function(){
       url: '/locandina-upload',
       multiple:false,
       fileName:'myfile',
-      formData: {"_token": token},
+      formData: {"_token": token, locandina_id: 1},
       allowedTypes: "jpg,png,gif",
       extErrorStr: "file non consentito.",
       onSuccess:function(files,data,xhr)
       {
-          alert(data['msg']);
-          $("#file").val(data['data']);
+          $('#fileuploader').append('<img width="200px" src="/uploads/'+data['data']+'">');
+          $('input[name=locandina_'+data['locandina_id']+']').val(data['data']);
       }
   });
 
@@ -168,7 +169,7 @@ $(function(){
         clonefield.find("input[id^='tempoStopDef_']").prop('id', 'tempoStopDef_'+curr_fieldset_index ).prop('name', 'tempoStopDef_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='visualizzaOgni_']").prop('id', 'visualizzaOgni_'+curr_fieldset_index ).prop('name', 'visualizzaOgni_'+curr_fieldset_index ).val('');
         // locandina
-        clonefield.find("div[id^='locandina_']").prop('id', 'locandina_'+curr_fieldset_index );
+        clonefield.find("input[id^='locandina_']").prop('id', 'locandina_'+curr_fieldset_index );
 
         clonefield.find('button.removepanelbtn').remove();
 
