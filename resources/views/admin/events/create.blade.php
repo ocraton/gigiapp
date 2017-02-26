@@ -96,7 +96,8 @@
 
                               <div class="col-md-6">
                                 <label class="control-label" >Locandina </label>
-                                <div id="fileuploader">Upload</div>
+                                <div id="fileuploader_1" class="uploadzone">Upload</div>
+                                <div id="previewLocandina_1"></div>
                                 <input type="hidden" name="locandina_1" id="locandina_1">
                               </div>
 
@@ -121,16 +122,18 @@
 $(function(){
 
   var token = $('meta[name="_token"]').attr('content');
-  $( "#fileuploader" ).uploadFile({
+  iduploader = 'fileuploader_1';
+  $( '#'+iduploader ).uploadFile({
       url: '/locandina-upload',
       multiple:false,
       fileName:'myfile',
-      formData: {"_token": token, locandina_id: 1},
+      formData: {"_token": token, locandina_id: iduploader.split('_')[1]},
       allowedTypes: "jpg,png,gif",
       extErrorStr: "file non consentito.",
       onSuccess:function(files,data,xhr)
       {
-          $('#fileuploader').append('<img width="200px" src="/uploads/'+data['data']+'">');
+
+          $('#previewLocandina_'+data['locandina_id']).append('<img width="200px" src="/uploads/'+data['data']+'">').hide().fadeIn('slow');
           $('input[name=locandina_'+data['locandina_id']+']').val(data['data']);
       }
   });
@@ -169,7 +172,10 @@ $(function(){
         clonefield.find("input[id^='tempoStopDef_']").prop('id', 'tempoStopDef_'+curr_fieldset_index ).prop('name', 'tempoStopDef_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='visualizzaOgni_']").prop('id', 'visualizzaOgni_'+curr_fieldset_index ).prop('name', 'visualizzaOgni_'+curr_fieldset_index ).val('');
         // locandina
-        clonefield.find("input[id^='locandina_']").prop('id', 'locandina_'+curr_fieldset_index );
+        clonefield.find("input[id^='locandina_']").prop('id', 'locandina_'+curr_fieldset_index ).prop('name', 'locandina_'+curr_fieldset_index ).val('');;
+        clonefield.find("div[id^='previewLocandina_']").prop('id', 'previewLocandina_'+curr_fieldset_index );
+        clonefield.find("div[id^='previewLocandina_'] img").remove();
+        clonefield.find("div[class='ajax-file-upload-container']").remove();
 
         clonefield.find('button.removepanelbtn').remove();
 
