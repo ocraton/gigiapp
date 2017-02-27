@@ -38,7 +38,7 @@
                                   <div class="col-md-3">
                                     <br>
                                     <span style="font-size: 1.9rem;">Data/Ora Visibile</span>
-                                    <input name="dataOraVisibile_1" id="dataOraVisibile_1" type="checkbox" value="" style="width: 20px;height: 17px; ">
+                                    <input name="dataOraVisibile_1" id="dataOraVisibile_1" type="checkbox" value="1" style="width: 20px;height: 17px; ">
                                   </div>
                                 </div>
                                 <div class="row tempidistop">
@@ -81,7 +81,7 @@
                                   <div class="col-md-4">
                                     <h4>Evento del giorno</h4>
                                       <span style="font-size: 2rem;">Full screen</span>
-                                      <input name="fullScreen_1" id="fullScreen_1" type="checkbox" value="" style="width: 20px;height: 17px; ">
+                                      <input name="fullScreen_1" id="fullScreen_1" type="checkbox" value="1" style="width: 20px;height: 17px; ">
                                   </div>
                                   <div class="col-md-4">
                                     <label class="control-label" >Tempo di stop </label>
@@ -136,9 +136,6 @@ $(function(){
           $('input[name=locandina_'+data['locandina_id']+']').val(data['data']);
       }
   });
-  $( "input.data_evento_c" ).datepicker({
-      dateFormat: "dd-mm-yy"
-  });
 
 
   //clona il pannello di input riaggiornando gli id e i name
@@ -159,7 +156,7 @@ $(function(){
         // ora evento
         clonefield.find("input[id^='oraEvento_']").prop('id', 'oraEvento_'+curr_fieldset_index ).prop('name', 'oraEvento_'+curr_fieldset_index ).val('');
         // data/ora visibile
-        clonefield.find("input[id^='dataOraVisibile_']").prop('id', 'dataOraVisibile_'+curr_fieldset_index ).prop('name', 'dataOraVisibile_'+curr_fieldset_index ).val('');
+        clonefield.find("input[id^='dataOraVisibile_']").prop('id', 'dataOraVisibile_'+curr_fieldset_index ).prop('name', 'dataOraVisibile_'+curr_fieldset_index ).val('1');
         // tempo di stop -1 -2 -3
         clonefield.find("input[id^='tempoStopMenouno_']").prop('id', 'tempoStopMenouno_'+curr_fieldset_index ).prop('name', 'tempoStopMenouno_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='tempoStopMenodue_']").prop('id', 'tempoStopMenodue_'+curr_fieldset_index ).prop('name', 'tempoStopMenodue_'+curr_fieldset_index ).val('');
@@ -171,7 +168,7 @@ $(function(){
         clonefield.find("input[id^='colorCommenti_']").prop('id', 'colorCommenti_'+curr_fieldset_index ).prop('name', 'colorCommenti_'+curr_fieldset_index ).val('337AB7');
         clonefield.find("input[id^='commentoDue_']").prop('id', 'commentoDue_'+curr_fieldset_index ).prop('name', 'commentoDue_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='commentoTre_']").prop('id', 'commentoTre_'+curr_fieldset_index ).prop('name', 'commentoTre_'+curr_fieldset_index ).val('');
-        clonefield.find("input[id^='fullScreen_']").prop('id', 'fullScreen_'+curr_fieldset_index ).prop('name', 'fullScreen_'+curr_fieldset_index ).val('');
+        clonefield.find("input[id^='fullScreen_']").prop('id', 'fullScreen_'+curr_fieldset_index ).prop('name', 'fullScreen_'+curr_fieldset_index ).val('1');
         clonefield.find("input[id^='tempoStopDef_']").prop('id', 'tempoStopDef_'+curr_fieldset_index ).prop('name', 'tempoStopDef_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='visualizzaOgni_']").prop('id', 'visualizzaOgni_'+curr_fieldset_index ).prop('name', 'visualizzaOgni_'+curr_fieldset_index ).val('');
         // locandina
@@ -194,6 +191,7 @@ $(function(){
 
         // reinitialize jscolor
         jscolor.installByClassName("jscolor");
+
         $('#fileuploader_'+curr_fieldset_index).uploadFile({
             url: '/locandina-upload',
             multiple:false,
@@ -208,80 +206,13 @@ $(function(){
             }
         });
 
+
   });
 
-
-/*
-  $('#eventsvalidator').on('submit', function(e) {
-
-      e.preventDefault();
-
-      var fieldsets = [];
-
-      $('fieldset').each(function (index) {
-
-        var indexc = index + 1;
-        var risultatoEsame = {
-            fogli: $('input[name=fogli_'+indexc+']:checked').val() === undefined ? -1 : $('input[name=fogli_'+indexc+']:checked').val(),
-            sottopannelli: $('input[name=sottopannelli_'+indexc+']:checked').val() === undefined ? -1 : $('input[name=sottopannelli_'+indexc+']:checked').val(),
-            stringone: $('#stringone_dati_'+indexc+'').val(),
-            getStringConcat() {
-              return this.fogli + '\n||\n' + this.sottopannelli + '\n||\n' + this.stringone + '\n$$\n'
-            }
-        }
-        fieldsets.push(risultatoEsame);
-
-      });
-
-      var stringone_dati_complessivo = "";
-
-      function getFieldFieldset(item, index) {
-           stringone_dati_complessivo = stringone_dati_complessivo + item.getStringConcat();
-      }
-
-      fieldsets.forEach(getFieldFieldset);
-
-      //console.log(stringone_dati_complessivo);
-
-
-      $('#eventsvalidator').find('submit').hide();
-      $('.loading').show();
-      var data = {
-          stringone_dati: stringone_dati_complessivo,
-          id_lab: $('#id_lab').val(),
-          nome: $('#nome').val(),
-          cognome: $('#cognome').val(),
-          sesso: $('#sesso').val(),
-          data_evento: $('#data_evento').val()
-      }
-      var urlString = '';
-      $.ajax({
-          url: urlString,
-          method:'POST',
-          data: data,
-          dataType:'json',
-          success: function(data){
-              // $('#risultato').append(data['result']);
-              $('.loading').hide();
-              $('#eventsvalidator').closest('.row').hide();
-              $("#risultato>.panel-body").html(data.result_debug);
-              if(data.error == true)
-                  $("#risultato>.panel-heading").html("ERRORE: -- Alcuni campi non sono corretti  -- I dati non sono stati inseriti sul DB").css('background-color','red');
-              else
-                  $("#risultato>.panel-heading").html("Risultato -- Dati Salvati Correttamente -- ").css('background-color','green');
-              $('#back').show();
-          },
-          error: function(xhr,status,error){
-              var msg = "Si è verificato un errore: ";
-              $('.loading').hide();
-              $('#eventsvalidator').closest('.row').hide();
-              $("#risultato>.panel-heading").html("ERRORE").css('background-color','red');
-              $( "#risultato>.panel-body" ).html( msg + status.error + ' - ' + error);
-              $('#back').show();
-          }
-      });
+  $( "input.data_evento_c" ).datepicker({
+      dateFormat: "dd-mm-yy"
   });
-*/
+
 
 });
 </script>

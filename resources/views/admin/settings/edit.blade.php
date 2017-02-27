@@ -21,7 +21,7 @@
                 </div>
                 <div class="row">
                       <div class="form-group col-lg-2">
-                        {!! Form::model($settings, ['method' => 'PATCH', 'id' => 'globalsettings', 'action' => ['SettingsController@update']]) !!}
+                        {!! Form::model($settings, ['method' => 'put', 'id' => 'globalsettings', 'action' => ['SettingsController@update']]) !!}
 
                           <div class="form-group">
                               <label>Dimensione caratteri</label>

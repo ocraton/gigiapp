@@ -26,7 +26,18 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="{{ url('/') }}"><i class="fa fa-calendar" aria-hidden="true"></i> Eventi </a>
+                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Eventi<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                   <a href="{{ url('/events') }}">Lista Eventi </a>
+                                </li>
+                                <li>
+                                   <a href="{{ url('/events/create') }}">Crea Eventi </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+
                         </li>
                         <li>
                             <a href="{{ url('/settings/edit') }}"><i class="fa fa-cogs" aria-hidden="true"></i> Impostazioni Globali </a>

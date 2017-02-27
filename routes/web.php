@@ -16,12 +16,13 @@ Route::get('/', function () {
 });
 
 Route::get('/events', 'EventController@index');
-Route::get('/events/edit', 'EventController@edit');
+Route::get('/events/{id}/edit', 'EventController@edit');
 Route::get('/events/create', 'EventController@create');
-Route::patch('/events', 'EventController@update');
+Route::post('/events/{id}', 'EventController@update');
 Route::post('/events', 'EventController@store');
+Route::delete('events/{id}', 'EventController@destroy');
 
 Route::get('/settings/edit', 'SettingsController@edit');
-Route::patch('/events', 'SettingsController@update');
+Route::put('/settings', 'SettingsController@update');
 
 Route::post('/locandina-upload', 'UploadController@store');
