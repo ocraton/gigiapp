@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
+use App\Events\SerializeFile;
 
 
 class EventController extends Controller {
@@ -16,6 +17,7 @@ class EventController extends Controller {
 	public function index()
 	{
 		$eventi = Event::orderBy('dataEvento', 'desc')->get();
+		event(new SerializeFile());
 		return view('admin.events.index', compact('eventi'));
 	}
 
