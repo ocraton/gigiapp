@@ -132,11 +132,14 @@ $(function(){
       extErrorStr: "file non consentito.",
       onSuccess:function(files,data,xhr)
       {
-
           $('#previewLocandina_'+data['locandina_id']).append('<img width="200px" src="/uploads/'+data['data']+'">').hide().fadeIn('slow');
           $('input[name=locandina_'+data['locandina_id']+']').val(data['data']);
       }
   });
+  $( "input.data_evento_c" ).datepicker({
+      dateFormat: "dd-mm-yy"
+  });
+
 
   //clona il pannello di input riaggiornando gli id e i name
   $('button#addfieldsetbtn').on('click', function(e) {
@@ -172,10 +175,12 @@ $(function(){
         clonefield.find("input[id^='tempoStopDef_']").prop('id', 'tempoStopDef_'+curr_fieldset_index ).prop('name', 'tempoStopDef_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='visualizzaOgni_']").prop('id', 'visualizzaOgni_'+curr_fieldset_index ).prop('name', 'visualizzaOgni_'+curr_fieldset_index ).val('');
         // locandina
+        clonefield.find("div[id^='fileuploader_']").prop('id', 'fileuploader_'+curr_fieldset_index );
         clonefield.find("input[id^='locandina_']").prop('id', 'locandina_'+curr_fieldset_index ).prop('name', 'locandina_'+curr_fieldset_index ).val('');;
         clonefield.find("div[id^='previewLocandina_']").prop('id', 'previewLocandina_'+curr_fieldset_index );
         clonefield.find("div[id^='previewLocandina_'] img").remove();
         clonefield.find("div[class='ajax-file-upload-container']").remove();
+
 
         clonefield.find('button.removepanelbtn').remove();
 
@@ -189,11 +194,22 @@ $(function(){
 
         // reinitialize jscolor
         jscolor.installByClassName("jscolor");
+        $('#fileuploader_'+curr_fieldset_index).uploadFile({
+            url: '/locandina-upload',
+            multiple:false,
+            fileName:'myfile',
+            formData: {"_token": token, locandina_id: curr_fieldset_index},
+            allowedTypes: "jpg,png,gif",
+            extErrorStr: "file non consentito.",
+            onSuccess:function(files,data,xhr)
+            {
+                $('#previewLocandina_'+data['locandina_id']).append('<img width="200px" src="/uploads/'+data['data']+'">').hide().fadeIn('slow');
+                $('input[name=locandina_'+data['locandina_id']+']').val(data['data']);
+            }
+        });
+
   });
 
-  $( "input.data_evento_c" ).datepicker({
-      dateFormat: "dd-mm-yy"
-  });
 
 /*
   $('#eventsvalidator').on('submit', function(e) {
