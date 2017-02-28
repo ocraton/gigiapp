@@ -38,7 +38,6 @@ class EventSerializeFile
         $datastring .= $setting[0]->dimensione_caratteri.$separatore.$setting[0]->indentazione.$separatore.$setting[0]->spaziatura_eventi;
         $datastring .= PHP_EOL;
         // eventi
-
         foreach ($eventi as $evento) {
           $datastring .= $evento->tempoStopMenouno.$separatore.
                          $evento->tempoStopMenodue.$separatore.
@@ -58,7 +57,7 @@ class EventSerializeFile
                     		 $evento->commentoTre.$separatore.
                     		 $evento->tempoStopDef.$separatore.PHP_EOL;;
 
-        }        
+        }
         Storage::disk('public')->put('dataeventpanel.txt', $datastring);
     }
 }

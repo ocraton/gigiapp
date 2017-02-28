@@ -206,6 +206,10 @@ $(function(){
             }
         });
 
+        $('#dataEvento_'+curr_fieldset_index).on('foucs',function(){
+          $(this).datepicker({});
+          $(this).datepicker('show');
+        });
 
   });
 

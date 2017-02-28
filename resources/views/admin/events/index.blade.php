@@ -34,12 +34,12 @@
 				<tbody>
 					@foreach($eventi as $evento)
 					<tr>
-            <td>{{ $evento->titoloEvento }} <div style="width: 10px; height: 10px;background-color:#{{ $evento->colorEvento }}"> </div></td>
-            <td>{{ $evento->dataEvento }} <div style="width: 10px; height: 10px;background-color:#{{ $evento->colorData }}"> </div></td>
+            <td>{{ $evento->titoloEvento }} <div style="width: 60px; height: 10px;background-color:#{{ $evento->colorEvento }}"> </div></td>
+            <td>{{ $evento->dataEvento }} <div style="width: 60px; height: 10px;background-color:#{{ $evento->colorData }}"> </div></td>
             <td>{{ $evento->oraEvento }}</td>
             <td><img width="200px" src="/uploads/{{ $evento->locandina }}"></td>
             <td>
-              <a href="/events/{{ $evento->id }}/edit"  class="btn btn-primary btn-sm">MODIFICA</a>                                        
+              <a href="/events/{{ $evento->id }}/edit"  class="btn btn-primary btn-sm">MODIFICA</a>
             </td>
 					</tr>
 					@endforeach

@@ -50,6 +50,7 @@ class EventController extends Controller {
 			foreach ($eventinput as $evento_input) {
 				Event::create($evento_input);
 			}
+			event(new SerializeFile());
 			flash()->success('Inserimento avvenuto');
 		} catch (Exception $e) {
 			flash()->danger('Impossibile salvare');
@@ -86,6 +87,7 @@ class EventController extends Controller {
 			$evento->visualizzaOgni = $request->visualizzaOgni_1 ;
 			$evento->locandina = $request->locandina_1 ;
 			$evento->save();
+			event(new SerializeFile());
 			flash()->success('Modifiche salvate');
 		} catch (Exception $e) {
 			flash()->danger('Impossibile salvare le modifiche');
