@@ -28,7 +28,7 @@
             <th>DataEvento</th>
             <th>OraEvento</th>
             <th>Locandina</th>
-            <th></th>
+            <th colspan="2"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +41,11 @@
             <td>
               <a href="/events/{{ $evento->id }}/edit"  class="btn btn-primary btn-sm">MODIFICA</a>
             </td>
+            <td>
+              {!! Form::open(['method' => 'DELETE', 'url' => 'events/'.$evento->id, 'id' => 'frm_'.$evento->id, 'class' => 'pull-left']) !!}
+              {!! Form::button('Cancella', ['class' => 'btn btn-danger btn-sm linkdestroy']) !!}
+              {!! Form::close() !!}
+            </td>
 					</tr>
 					@endforeach
 				</tbody>
@@ -50,5 +55,23 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('js/bootbox.min.js') }}"></script>
+<script>
+$( document ).ready(function() {
 
+    $('button.linkdestroy').on("click", function(e) {
+      e.preventDefault();
+      var usrnm =  $('td:first', $(this).parents('tr')).text();
+      var thisbtn = $(this);
+      bootbox.confirm("<h3>Cancellare evento: " +usrnm+ "? </h3>", function(result) {
+        if(result){
+            var sbtfrm = thisbtn.closest('form').attr('id');
+            $('form#'+sbtfrm).submit();
+        }
+      });
+    });
+
+
+});
+</script>
 @endsection

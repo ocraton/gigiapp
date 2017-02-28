@@ -30,7 +30,7 @@ elixir(mix => {
         './resources/assets/admin/bower_components/metisMenu/dist/metisMenu.min.js',
         './resources/assets/admin/dist/js/sb-admin-2.js',
         './resources/assets/admin/js/bootbox.min.js',
-        './resources/assets/admin/js/jscolor.min.js'
+        './resources/assets/admin/js/jscolor.min.js'        
     ],  'public/js/app.js');
 
 });

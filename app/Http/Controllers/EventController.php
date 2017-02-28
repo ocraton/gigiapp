@@ -5,6 +5,7 @@ use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use App\Events\SerializeFile;
+use Storage;
 
 
 class EventController extends Controller {
@@ -100,7 +101,10 @@ class EventController extends Controller {
 	public function destroy($id)
 	{
 		try {
+			$evento = Event::findOrFail($id);
 			Event::destroy($id);
+			Storage::disk('uploads')->delete($evento->locandina);
+			event(new SerializeFile());
 			flash()->warning('Evento cancellato');
 		} catch (Exception $e) {
 			flash()->danger('Impossibile cancellare evento');
