@@ -141,6 +141,7 @@ $(function(){
   //clona il pannello di input riaggiornando gli id e i name
   $('button#addfieldsetbtn').on('click', function(e) {
 
+        $( "input.data_evento_c" ).datepicker('destroy');
         e.preventDefault();
         var fieldset_last = $('fieldset:last');
         var fieldset_id = $('fieldset:last').attr("id");
@@ -206,9 +207,8 @@ $(function(){
             }
         });
 
-        $('#dataEvento_'+curr_fieldset_index).on('foucs',function(){
-          $(this).datepicker({});
-          $(this).datepicker('show');
+        $( "input.data_evento_c" ).datepicker({
+            dateFormat: "dd-mm-yy"
         });
 
   });
