@@ -15,7 +15,7 @@ require('laravel-elixir-vue');
  */
 
 
-elixir(mix => {
+elixir(function(mix) {
 
     mix.styles([
         './resources/assets/admin/bower_components/bootstrap/dist/css/bootstrap.min.css',
@@ -26,13 +26,14 @@ elixir(mix => {
         './resources/assets/css/jquery-ui.min.css'
     ],  'public/css/app.css').webpack('app.css');
 
-    mix.webpack([
+    mix.webpack(
         /*'./resources/assets/admin/dist/js/default.js',
         './resources/assets/admin/js/events-create.js',
         './resources/assets/admin/bower_components/metisMenu/dist/metisMenu.min.js',
         './resources/assets/admin/dist/js/sb-admin-2.js',
+        './resources/assets/js/bootstrap.min.js',
         './resources/assets/admin/js/bootbox.min.js',*/
-        './resources/assets/admin/js/jscolor.min.js',
-    ],  'public/js/app.js');
+        './resources/assets/admin/js/jscolor.min.js'
+    );
 
 });
