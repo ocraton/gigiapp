@@ -51,11 +51,4 @@
 
 @section('scripts')
 
-<script>
-$(function(){
-
-
-
-});
-</script>
 @endsection

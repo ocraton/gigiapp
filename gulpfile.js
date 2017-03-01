@@ -21,16 +21,18 @@ elixir(mix => {
         './resources/assets/admin/bower_components/bootstrap/dist/css/bootstrap.min.css',
         './resources/assets/admin/bower_components/metisMenu/dist/metisMenu.min.css',
         './resources/assets/admin/dist/css/timeline.css',
-        './resources/assets/admin/dist/css/sb-admin-2.css'
+        './resources/assets/admin/dist/css/sb-admin-2.css',
+        './resources/assets/css/font-awesome.min.css',
+        './resources/assets/css/jquery-ui.min.css'
     ],  'public/css/app.css').webpack('app.css');
 
     mix.webpack([
-        './resources/assets/admin/dist/js/default.js',
+        /*'./resources/assets/admin/dist/js/default.js',
         './resources/assets/admin/js/events-create.js',
         './resources/assets/admin/bower_components/metisMenu/dist/metisMenu.min.js',
         './resources/assets/admin/dist/js/sb-admin-2.js',
-        './resources/assets/admin/js/bootbox.min.js',
-        './resources/assets/admin/js/jscolor.min.js'        
+        './resources/assets/admin/js/bootbox.min.js',*/
+        './resources/assets/admin/js/jscolor.min.js',
     ],  'public/js/app.js');
 
 });
