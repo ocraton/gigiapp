@@ -42,13 +42,12 @@ class EventSerializeFile
                          $setting[0]->spaziatura_eventi.$separatore;
 
           // eventi
-          $datastring .= $evento->dataEvento.$separatore.
-                         $evento->tempoStopDef.$separatore.
+          $datastring .= $evento->tempoStopDef.$separatore.
                          $evento->tempoStopMenouno.$separatore.
                          $evento->tempoStopMenodue.$separatore.
                          $evento->tempoStopMenotre.$separatore.
                          $evento->visualizzaOgni.$separatore.
-                         $evento->shortData.$separatore.
+                         $evento->dataEvento.$separatore.
                          $evento->dataOraVisibile.$separatore.
                          $evento->locandina.$separatore.
                          $evento->fullScreen.$separatore.
