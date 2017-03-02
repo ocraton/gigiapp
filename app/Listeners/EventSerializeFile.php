@@ -37,9 +37,13 @@ class EventSerializeFile
         setlocale(LC_ALL, 'Italian');
         foreach ($eventi as $evento) {
           // impostazioni globali
-          $datastring .= $setting[0]->dimensione_caratteri.$separatore.$setting[0]->indentazione.$separatore.$setting[0]->spaziatura_eventi;
+          $datastring .= $setting[0]->dimensione_caratteri.$separatore.
+                         $setting[0]->indentazione.$separatore.
+                         $setting[0]->spaziatura_eventi.$separatore;
+
           // eventi
-          $datastring .= $evento->tempoStopDef.$separatore.
+          $datastring .= $evento->dataEvento.$separatore.
+                         $evento->tempoStopDef.$separatore.
                          $evento->tempoStopMenouno.$separatore.
                          $evento->tempoStopMenodue.$separatore.
                          $evento->tempoStopMenotre.$separatore.
