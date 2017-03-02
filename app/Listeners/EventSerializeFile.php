@@ -34,30 +34,32 @@ class EventSerializeFile
         $separatore = '||';
         $eventi = Event::all();
         $setting = Setting::all();
-        // impostazioni globali
-        $datastring .= $setting[0]->dimensione_caratteri.$separatore.$setting[0]->indentazione.$separatore.$setting[0]->spaziatura_eventi;
-        $datastring .= PHP_EOL;
-        // eventi
+        setlocale(LC_ALL, 'Italian');
         foreach ($eventi as $evento) {
-          $datastring .= $evento->tempoStopMenouno.$separatore.
+          // impostazioni globali
+          $datastring .= $setting[0]->dimensione_caratteri.$separatore.$setting[0]->indentazione.$separatore.$setting[0]->spaziatura_eventi;
+          // eventi
+          $datastring .= $evento->tempoStopDef.$separatore.
+                         $evento->tempoStopMenouno.$separatore.
                          $evento->tempoStopMenodue.$separatore.
                          $evento->tempoStopMenotre.$separatore.
                          $evento->visualizzaOgni.$separatore.
+                         $evento->shortData.$separatore.
                          $evento->dataOraVisibile.$separatore.
                          $evento->locandina.$separatore.
                          $evento->fullScreen.$separatore.
                          $evento->colorData.$separatore.
-                         $evento->dataEvento.$separatore.
+                         strftime("%#d-%b-%Y", strtotime($evento->dataEvento)).$separatore.
                          $evento->oraEvento.$separatore.
                     		 $evento->colorEvento.$separatore.
                          $evento->titoloEvento.$separatore.
                     		 $evento->colorCommenti.$separatore.
                     		 $evento->commentoUno.$separatore.
                     		 $evento->commentoDue.$separatore.
-                    		 $evento->commentoTre.$separatore.
-                    		 $evento->tempoStopDef.$separatore.PHP_EOL;;
+                    		 $evento->commentoTre.PHP_EOL;
 
         }
-        Storage::disk('public')->put('dataeventpanel.txt', $datastring);
+
+        Storage::disk('public')->put('info.txt', $datastring);
     }
 }
