@@ -41,6 +41,7 @@ class EventSerializeFile
                          $setting[0]->indentazione.$separatore.
                          $setting[0]->spaziatura_eventi.$separatore;
 
+
           // eventi
           $datastring .= $evento->tempoStopDef.$separatore.
                          $evento->tempoStopMenouno.$separatore.

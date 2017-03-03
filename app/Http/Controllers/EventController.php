@@ -38,7 +38,7 @@ class EventController extends Controller {
 				$keyexpl = explode('_', $key);
 
 				if($currIndex == $keyexpl[1])
-				{
+				{					
 						$eventinput[$currIndex][$keyexpl[0]] = $value;
 				} else {
 						$currIndex = $keyexpl[1];
