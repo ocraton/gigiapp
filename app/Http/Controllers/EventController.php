@@ -17,6 +17,7 @@ class EventController extends Controller {
 
 	public function index()
 	{
+		$this->deleteOldEvents();
 		$eventi = Event::orderBy('dataEvento', 'desc')->get();
 		event(new SerializeFile());
 		return view('admin.events.index', compact('eventi'));
@@ -38,7 +39,7 @@ class EventController extends Controller {
 				$keyexpl = explode('_', $key);
 
 				if($currIndex == $keyexpl[1])
-				{					
+				{
 						$eventinput[$currIndex][$keyexpl[0]] = $value;
 				} else {
 						$currIndex = $keyexpl[1];
@@ -68,12 +69,13 @@ class EventController extends Controller {
 
 	public function update(Request $request, $id)
 	{
+
 		try {
 			$evento = Event::findOrFail($id);
 			$evento->dataEvento = $request->dataEvento_1 ;
 			$evento->colorData = $request->colorData_1;
 			$evento->oraEvento = $request->oraEvento_1 ;
-			$evento->dataOraVisibile = $request->dataOraVisibile_1 ;
+			$evento->dataOraVisibile = empty($request->dataOraVisibile_1) ? 0 : 1;
 			$evento->tempoStopMenouno = $request->tempoStopMenouno_1 ;
 			$evento->tempoStopMenodue = $request->tempoStopMenodue_1 ;
 			$evento->tempoStopMenotre = $request->tempoStopMenotre_1 ;
@@ -83,15 +85,18 @@ class EventController extends Controller {
 			$evento->commentoDue = $request->commentoDue_1 ;
 			$evento->commentoTre = $request->commentoTre_1 ;
 			$evento->colorCommenti = $request->colorCommenti_1 ;
-			$evento->fullScreen = $request->fullScreen_1 ;
+			$evento->fullScreen = empty($request->fullScreen_1) ? 0 : 1;
 			$evento->tempoStopDef = $request->tempoStopDef_1 ;
 			$evento->visualizzaOgni = $request->visualizzaOgni_1 ;
 			$evento->locandina = $request->locandina_1 ;
 			$evento->save();
 			event(new SerializeFile());
 			flash()->success('Modifiche salvate');
+
 		} catch (Exception $e) {
+
 			flash()->danger('Impossibile salvare le modifiche');
+
 		}
 
 		return redirect('/events/'.$evento->id.'/edit');
@@ -110,6 +115,36 @@ class EventController extends Controller {
 			flash()->danger('Impossibile cancellare evento');
 		}
 		return redirect('events');
+	}
+
+
+	private function deleteOldEvents(){
+
+			$eventi = Event::all();
+
+			foreach ($eventi as $evento) {
+					$arrayLocandine = $this->updateArrayLocandine();
+					if(Carbon::parse($evento->dataEvento)->format('Y-m-d') < Carbon::today()->format('Y-m-d') && $evento->dataOraVisibile == 1) {
+							 try {
+									$evento->delete();
+									$indexes = array_keys($arrayLocandine, $evento->locandina);
+									if(count($indexes) < 2){
+											Storage::disk('uploads')->delete($evento->locandina);
+									}
+									event(new SerializeFile());
+							 } catch (Exception $e) {}
+					}
+			}
+
+	}
+
+	private function updateArrayLocandine(){
+		$eventi_image = Event::select('locandina')->get();
+		$arrayLocandine = [];
+		foreach ($eventi_image as $evntimg) {
+			array_push($arrayLocandine, $evntimg->locandina);
+		}
+		return $arrayLocandine;
 	}
 
 }

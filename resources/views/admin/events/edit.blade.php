@@ -18,7 +18,7 @@
                 <div class="row">
 
                     @include('flash::message')
-                  
+
                 </div>
                 <div class="row">
                       <form id="eventsvalidator" method="post" action="/events/{{ $evento->id }}" class="form-horizontal" >
@@ -85,7 +85,7 @@
                                   <div class="col-md-4">
                                     <h4>Evento del giorno</h4>
                                       <span style="font-size: 2rem;">Full screen</span>
-                                      <input name="fullScreen_1" id="fullScreen_1" type="checkbox" value="1" style="width: 20px;height: 17px; " @if($evento->dataOraVisibile == 1 ) checked @endif>
+                                      <input name="fullScreen_1" id="fullScreen_1" type="checkbox" value="1" style="width: 20px;height: 17px; " @if($evento->fullScreen == 1 ) checked @endif>
                                   </div>
                                   <div class="col-md-4">
                                     <label class="control-label" >Tempo di stop </label>

@@ -32,9 +32,10 @@ class EventSerializeFile
     {
         $datastring = '';
         $separatore = '||';
-        $eventi = Event::all();
+        $eventi = Event::orderBy('dataEvento', 'desc')->get();
         $setting = Setting::all();
-        setlocale(LC_ALL, 'Italian');
+        setlocale(LC_ALL, 'Italian'); //windows
+        // setlocale(LC_TIME, 'it_IT'); // linux
         foreach ($eventi as $evento) {
           // impostazioni globali
           $datastring .= $setting[0]->dimensione_caratteri.$separatore.
@@ -53,7 +54,7 @@ class EventSerializeFile
                          $evento->locandina.$separatore.
                          $evento->fullScreen.$separatore.
                          $evento->colorData.$separatore.
-                         strftime("%#d-%b-%Y", strtotime($evento->dataEvento)).$separatore.
+                         strftime("%#d %B %Y", strtotime($evento->dataEvento)).$separatore.
                          $evento->oraEvento.$separatore.
                     		 $evento->colorEvento.$separatore.
                          $evento->titoloEvento.$separatore.

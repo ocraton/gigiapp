@@ -27,6 +27,7 @@
             <th>Titolo</th>
             <th>DataEvento</th>
             <th>OraEvento</th>
+            <th>DataOraVisibile</th>
             <th>Locandina</th>
             <th colspan="2"></th>
 					</tr>
@@ -37,6 +38,7 @@
             <td>{{ $evento->titoloEvento }} <div style="width: 60px; height: 10px;background-color:#{{ $evento->colorEvento }}"> </div></td>
             <td>{{ $evento->dataEvento }} <div style="width: 60px; height: 10px;background-color:#{{ $evento->colorData }}"> </div></td>
             <td>{{ $evento->oraEvento }}</td>
+            <td>{{ $evento->dataOraVisibile }}</td>
             <td><img width="200px" src="/uploads/{{ $evento->locandina }}"></td>
             <td>
               <a href="/events/{{ $evento->id }}/edit"  class="btn btn-primary btn-sm">MODIFICA</a>
