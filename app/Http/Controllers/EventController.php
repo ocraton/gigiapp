@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use App\Event;
+use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use App\Events\SerializeFile;
@@ -25,7 +26,8 @@ class EventController extends Controller {
 
 	public function create()
 	{
-		return view('admin.events.create');
+		$settings = Setting::all();
+		return view('admin.events.create', compact('settings'));
 	}
 
 	public function store(Request $request)

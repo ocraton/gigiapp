@@ -12,6 +12,8 @@ class Event extends Model
 	protected $fillable = [
 
 			'dataEvento',
+			'indentazioneDataEvento',
+			'sizefontDataEvento',
 			'colorData',
 			'oraEvento',
 			'dataOraVisibile',
@@ -19,17 +21,30 @@ class Event extends Model
 			'tempoStopMenodue',
 			'tempoStopMenotre',
 			'titoloEvento',
+			'titoloEventoRigadue',
 			'colorEvento',
+			'indentazioneTitolo',
+			'sizefontTitolo',
 			'commentoUno',
-			'commentoDue',
-			'commentoTre',
 			'colorCommenti',
+			'indentazioneCommentoUno',
+			'sizefontCommentoUno',
+			'commentoDue',
+			'colorCommentiDue',
+			'indentazioneCommentoDue',
+			'sizefontCommentoDue',
+			'commentoTre',
+			'colorCommentiTre',
+			'indentazioneCommentoTre',
+			'sizefontCommentoTre',
 			'fullScreen',
 			'tempoStopDef',
 			'visualizzaOgni',
 			'locandina',
 
     ];
+
+
 
 
 }

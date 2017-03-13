@@ -13,7 +13,8 @@ class Setting extends Model
 
 				'dimensione_caratteri',
         'indentazione',
-        'spaziatura_eventi'
+        'spaziatura_eventi',
+				'colore'
 
     ];
 

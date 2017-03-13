@@ -25,7 +25,8 @@ class SettingsController extends Controller {
 		try {
 			Setting::where('id', 1)->update(['dimensione_caratteri' => $request->dimensione_caratteri,
 			'indentazione' => $request->indentazione,
-			'spaziatura_eventi' => $request->spaziatura_eventi]);
+			'spaziatura_eventi' => $request->spaziatura_eventi,
+			'colore' => $request->colore]);
 			event(new SerializeFile());
 			flash()->success('Impostazioni Salvate');
 		} catch (Exception $e) {

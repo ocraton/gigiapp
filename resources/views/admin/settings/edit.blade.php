@@ -24,7 +24,7 @@
                         {!! Form::model($settings, ['method' => 'put', 'id' => 'globalsettings', 'action' => ['SettingsController@update']]) !!}
 
                           <div class="form-group">
-                              <label>Dimensione caratteri</label>
+                              <label>FontSize</label>
                               {!! Form::text('dimensione_caratteri', null, ['class' => 'form-control']) !!}
                               <p class="pull-right">in pixel</p>
                           </div>
@@ -37,6 +37,13 @@
                               <label>Spaziatura tra eventi</label>
                               {!! Form::text('spaziatura_eventi', null, ['class' => 'form-control']) !!}
                               <p class="pull-right">in pixel</p>
+                          </div>
+                          <div class="form-group">
+                              <label>Colore</label>
+                              <span style="padding: 0" class="input-group-addon">
+                                {!! Form::text('colore', null, ['class' => 'form-control jscolor {position:\'right\'}']) !!}
+
+                              </span>
                           </div>
                           <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-check-circle" aria-hidden="true"></i> Salva</button>
