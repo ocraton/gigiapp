@@ -221,8 +221,8 @@ $(function(){
 
         // id data evento
         clonefield.find("input[id^='dataEvento_']").prop('id', 'dataEvento_'+curr_fieldset_index ).prop('name', 'dataEvento_'+curr_fieldset_index ).val('');
-        clonefield.find("input[id^='indentazioneDataEvento_']").prop('id', 'indentazioneDataEvento_'+curr_fieldset_index ).prop('name', 'indentazioneDataEvento_'+curr_fieldset_index ).val('');
-        clonefield.find("input[id^='sizefontDataEvento_']").prop('id', 'sizefontDataEvento_'+curr_fieldset_index ).prop('name', 'sizefontDataEvento_'+curr_fieldset_index ).val('');
+        clonefield.find("input[id^='indentazioneDataEvento_']").prop('id', 'indentazioneDataEvento_'+curr_fieldset_index ).prop('name', 'indentazioneDataEvento_'+curr_fieldset_index ).val('{{ $settings[0]->indentazione }}');
+        clonefield.find("input[id^='sizefontDataEvento_']").prop('id', 'sizefontDataEvento_'+curr_fieldset_index ).prop('name', 'sizefontDataEvento_'+curr_fieldset_index ).val('{{ $settings[0]->dimensione_caratteri }}');
         clonefield.find("input[id^='colorData_']").prop('id', 'colorData_'+curr_fieldset_index ).prop('name', 'colorData_'+curr_fieldset_index ).val('{{ $settings[0]->colore }}');
         // ora evento
         clonefield.find("input[id^='oraEvento_']").prop('id', 'oraEvento_'+curr_fieldset_index ).prop('name', 'oraEvento_'+curr_fieldset_index ).val('');
@@ -236,23 +236,23 @@ $(function(){
         clonefield.find("input[id^='titoloEvento_']").prop('id', 'titoloEvento_'+curr_fieldset_index ).prop('name', 'titoloEvento_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='titoloEventoRigadue_']").prop('id', 'titoloEventoRigadue_'+curr_fieldset_index ).prop('name', 'titoloEventoRigadue_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='colorEvento_']").prop('id', 'colorEvento_'+curr_fieldset_index ).prop('name', 'colorEvento_'+curr_fieldset_index ).val('{{ $settings[0]->colore }}');
-        clonefield.find("input[id^='indentazioneTitolo_']").prop('id', 'indentazioneTitolo_'+curr_fieldset_index ).prop('name', 'indentazioneTitolo_'+curr_fieldset_index ).val('');
-        clonefield.find("input[id^='sizefontTitolo_']").prop('id', 'sizefontTitolo_'+curr_fieldset_index ).prop('name', 'sizefontTitolo_'+curr_fieldset_index ).val('');
+        clonefield.find("input[id^='indentazioneTitolo_']").prop('id', 'indentazioneTitolo_'+curr_fieldset_index ).prop('name', 'indentazioneTitolo_'+curr_fieldset_index ).val('{{ $settings[0]->indentazione }}');
+        clonefield.find("input[id^='sizefontTitolo_']").prop('id', 'sizefontTitolo_'+curr_fieldset_index ).prop('name', 'sizefontTitolo_'+curr_fieldset_index ).val('{{ $settings[0]->dimensione_caratteri }}');
 
         clonefield.find("input[id^='commentoUno_']").prop('id', 'commentoUno_'+curr_fieldset_index ).prop('name', 'commentoUno_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='colorCommenti_']").prop('id', 'colorCommenti_'+curr_fieldset_index ).prop('name', 'colorCommenti_'+curr_fieldset_index ).val('{{ $settings[0]->colore }}');
-        clonefield.find("input[id^='indentazioneCommentoUno_']").prop('id', 'indentazioneCommentoUno_'+curr_fieldset_index ).prop('name', 'indentazioneCommentoUno_'+curr_fieldset_index ).val('');
-        clonefield.find("input[id^='sizefontCommentoUno_']").prop('id', 'sizefontCommentoUno_'+curr_fieldset_index ).prop('name', 'sizefontCommentoUno_'+curr_fieldset_index ).val('');
+        clonefield.find("input[id^='indentazioneCommentoUno_']").prop('id', 'indentazioneCommentoUno_'+curr_fieldset_index ).prop('name', 'indentazioneCommentoUno_'+curr_fieldset_index ).val('{{ $settings[0]->indentazione }}');
+        clonefield.find("input[id^='sizefontCommentoUno_']").prop('id', 'sizefontCommentoUno_'+curr_fieldset_index ).prop('name', 'sizefontCommentoUno_'+curr_fieldset_index ).val('{{ $settings[0]->dimensione_caratteri }}');
 
         clonefield.find("input[id^='commentoDue_']").prop('id', 'commentoDue_'+curr_fieldset_index ).prop('name', 'commentoDue_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='colorCommentiDue_']").prop('id', 'colorCommentiDue_'+curr_fieldset_index ).prop('name', 'colorCommentiDue_'+curr_fieldset_index ).val('{{ $settings[0]->colore }}');
-        clonefield.find("input[id^='indentazioneCommentoDue_']").prop('id', 'indentazioneCommentoDue_'+curr_fieldset_index ).prop('name', 'indentazioneCommentoDue_'+curr_fieldset_index ).val('');
-        clonefield.find("input[id^='sizefontCommentoDue_']").prop('id', 'sizefontCommentoDue_'+curr_fieldset_index ).prop('name', 'sizefontCommentoDue_'+curr_fieldset_index ).val('');
+        clonefield.find("input[id^='indentazioneCommentoDue_']").prop('id', 'indentazioneCommentoDue_'+curr_fieldset_index ).prop('name', 'indentazioneCommentoDue_'+curr_fieldset_index ).val('{{ $settings[0]->indentazione }}');
+        clonefield.find("input[id^='sizefontCommentoDue_']").prop('id', 'sizefontCommentoDue_'+curr_fieldset_index ).prop('name', 'sizefontCommentoDue_'+curr_fieldset_index ).val('{{ $settings[0]->dimensione_caratteri }}');
 
         clonefield.find("input[id^='commentoTre_']").prop('id', 'commentoTre_'+curr_fieldset_index ).prop('name', 'commentoTre_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='colorCommentiTre_']").prop('id', 'colorCommentiTre_'+curr_fieldset_index ).prop('name', 'colorCommentiTre_'+curr_fieldset_index ).val('{{ $settings[0]->colore }}');
-        clonefield.find("input[id^='indentazioneCommentoTre_']").prop('id', 'indentazioneCommentoTre_'+curr_fieldset_index ).prop('name', 'indentazioneCommentoTre_'+curr_fieldset_index ).val('');
-        clonefield.find("input[id^='sizefontCommentoTre_']").prop('id', 'sizefontCommentoTre_'+curr_fieldset_index ).prop('name', 'sizefontCommentoTre_'+curr_fieldset_index ).val('');
+        clonefield.find("input[id^='indentazioneCommentoTre_']").prop('id', 'indentazioneCommentoTre_'+curr_fieldset_index ).prop('name', 'indentazioneCommentoTre_'+curr_fieldset_index ).val('{{ $settings[0]->indentazione }}');
+        clonefield.find("input[id^='sizefontCommentoTre_']").prop('id', 'sizefontCommentoTre_'+curr_fieldset_index ).prop('name', 'sizefontCommentoTre_'+curr_fieldset_index ).val('{{ $settings[0]->dimensione_caratteri }}');
 
         clonefield.find("input[id^='fullScreen_']").prop('id', 'fullScreen_'+curr_fieldset_index ).prop('name', 'fullScreen_'+curr_fieldset_index ).val('1');
         clonefield.find("input[id^='tempoStopDef_']").prop('id', 'tempoStopDef_'+curr_fieldset_index ).prop('name', 'tempoStopDef_'+curr_fieldset_index ).val('');

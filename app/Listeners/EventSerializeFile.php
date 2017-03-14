@@ -33,15 +33,10 @@ class EventSerializeFile
         $datastring = '';
         $separatore = '||';
         $eventi = Event::orderBy('dataEvento', 'desc')->get();
-        $setting = Setting::all();
+
         setlocale(LC_ALL, 'Italian'); //windows
         // setlocale(LC_TIME, 'it_IT'); // linux
         foreach ($eventi as $evento) {
-          // impostazioni globali
-          $datastring .= $setting[0]->dimensione_caratteri.$separatore.
-                         $setting[0]->indentazione.$separatore.
-                         $setting[0]->spaziatura_eventi.$separatore;
-
 
           // eventi
           $datastring .= $evento->tempoStopDef.$separatore.
@@ -61,10 +56,28 @@ class EventSerializeFile
                     		 $evento->colorCommenti.$separatore.
                     		 $evento->commentoUno.$separatore.
                     		 $evento->commentoDue.$separatore.
-                    		 $evento->commentoTre.PHP_EOL;
+                    		 $evento->commentoTre.$separatore.
+                         $evento->indentazioneDataEvento.$separatore.
+                         $evento->sizefontDataEvento.$separatore.
+                         $evento->indentazioneTitolo.$separatore.
+                         $evento->sizefontTitolo.$separatore.
+                         $evento->titoloEventoRigadue.$separatore.
+                         $evento->indentazioneCommentoUno.$separatore.
+                         $evento->sizefontCommentoUno.$separatore.
+                         $evento->colorCommentiDue.$separatore.
+                         $evento->indentazioneCommentoDue.$separatore.
+                         $evento->sizefontCommentoDue.$separatore.
+                         $evento->colorCommentiTre.$separatore.
+                         $evento->indentazioneCommentoTre.$separatore.
+                         $evento->sizefontCommentoTre.
+                         PHP_EOL;
+
 
         }
 
         Storage::disk('public')->put('info.txt', $datastring);
+
+        //shell_exec()
+
     }
 }
