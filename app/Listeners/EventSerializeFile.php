@@ -33,10 +33,13 @@ class EventSerializeFile
         $datastring = '';
         $separatore = '||';
         $eventi = Event::orderBy('dataEvento', 'desc')->get();
-
+        $setting = Setting::all();
         setlocale(LC_ALL, 'Italian'); //windows
         // setlocale(LC_TIME, 'it_IT'); // linux
         foreach ($eventi as $evento) {
+
+          // impostazioni globali
+          $datastring .= $setting[0]->spaziatura_eventi.$separatore;
 
           // eventi
           $datastring .= $evento->tempoStopDef.$separatore.
@@ -51,12 +54,12 @@ class EventSerializeFile
                          $evento->colorData.$separatore.
                          strftime("%#d %B %Y", strtotime($evento->dataEvento)).$separatore.
                          $evento->oraEvento.$separatore.
-                    		 $evento->colorEvento.$separatore.
+                     		 $evento->colorEvento.$separatore.
                          $evento->titoloEvento.$separatore.
-                    		 $evento->colorCommenti.$separatore.
-                    		 $evento->commentoUno.$separatore.
-                    		 $evento->commentoDue.$separatore.
-                    		 $evento->commentoTre.$separatore.
+                     		 $evento->colorCommenti.$separatore.
+                     		 $evento->commentoUno.$separatore.
+                     		 $evento->commentoDue.$separatore.
+                     		 $evento->commentoTre.$separatore.
                          $evento->indentazioneDataEvento.$separatore.
                          $evento->sizefontDataEvento.$separatore.
                          $evento->indentazioneTitolo.$separatore.
@@ -71,7 +74,6 @@ class EventSerializeFile
                          $evento->indentazioneCommentoTre.$separatore.
                          $evento->sizefontCommentoTre.
                          PHP_EOL;
-
 
         }
 
