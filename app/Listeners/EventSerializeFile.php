@@ -79,7 +79,7 @@ class EventSerializeFile
 
         Storage::disk('public')->put('info.txt', $datastring);
 
-        //shell_exec()
+        // shell_exec('');
 
     }
 }

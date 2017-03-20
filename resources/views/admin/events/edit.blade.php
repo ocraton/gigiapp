@@ -24,7 +24,7 @@
                       <form id="eventsvalidator" method="post" action="/events/{{ $evento->id }}" class="form-horizontal" >
                             {{ csrf_field() }}
                             <fieldset class="col-md-12" style="border: 1px solid #6b6b6b; padding: 10px" id="fieldsetp_1">
-                              <div class="col-md-6">
+                              <div class="col-md-8">
                                 <div class="row">
                                     <div class="col-md-4">
                                       <label class="control-label" >Data </label>
@@ -165,7 +165,7 @@
                                   </div>
                               </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                 <label class="control-label" >Locandina </label>
                                 <div id="fileuploader_1" class="uploadzone">Upload</div>
                                 <div id="previewLocandina_1">

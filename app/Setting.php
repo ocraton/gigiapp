@@ -11,10 +11,22 @@ class Setting extends Model
 
 	protected $fillable = [
 
-				'dimensione_caratteri',
-        'indentazione',
-        'spaziatura_eventi',
-				'colore'
+			'spaziatura_eventi',
+			'dataora_dimensione_caratteri',
+			'dataora_indentazione',
+			'dataora_colore',
+			'titolo_dimensione_caratteri',
+			'titolo_indentazione',
+			'titolo_colore',
+			'commentouno_dimensione_caratteri',
+			'commentouno_indentazione',
+			'commentouno_colore',
+			'commentodue_dimensione_caratteri',
+			'commentodue_indentazione',
+			'commentodue_colore',
+			'commentotre_dimensione_caratteri',
+			'commentotre_indentazione',
+			'commentotre_colore'
 
     ];
 

@@ -20,14 +20,14 @@
                       <form id="eventsvalidator" method="post" action="/events" class="form-horizontal" >
                             {{ csrf_field() }}
                             <fieldset class="col-md-12" style="border: 1px solid #6b6b6b; padding: 10px" id="fieldsetp_1">
-                              <div class="col-md-6">
+                              <div class="col-md-8">
                               <div class="row">
                                   <div class="col-md-4">
                                     <label class="control-label" >Data </label>
                                     <div class="form-group input-group">
                                     <input style="margin-left: 15px" id="dataEvento_1" name="dataEvento_1" type="text" placeholder="gg-mm-yyyy" class="form-control data_evento_c" >
                                     <span style="padding: 0" class="input-group-addon">
-                                      <input class="form-control jscolor pull-right" id="colorData_1" type="text" name="colorData_1" value="{{ $settings[0]->colore }}" style="width: 80px">
+                                      <input class="form-control jscolor pull-right" id="colorData_1" type="text" name="colorData_1" value="{{ $settings[0]->dataora_colore }}" style="width: 80px">
                                     </span>
                                     </div>
                                   </div>
@@ -42,11 +42,11 @@
                                   </div>
                                   <div class="col-md-2">
                                         <label style="margin-top: 7px;margin-bottom: 0;" class="indentazioneDataEvento_1" >Indentazione </label>
-                                        <input name="indentazioneDataEvento_1" type="text" class="form-control" id="indentazioneDataEvento_1" value="{{ $settings[0]->indentazione }}">
+                                        <input name="indentazioneDataEvento_1" type="text" class="form-control" id="indentazioneDataEvento_1" value="{{ $settings[0]->dataora_indentazione }}">
                                   </div>
                                   <div class="col-md-2">
                                         <label  style="margin-top: 7px;margin-bottom: 0;"  class="sizefontDataEvento_1" >FontSize </label>
-                                        <input name="sizefontDataEvento_1" type="text" class="form-control" id="sizefontDataEvento_1" value="{{ $settings[0]->dimensione_caratteri }}">
+                                        <input name="sizefontDataEvento_1" type="text" class="form-control" id="sizefontDataEvento_1" value="{{ $settings[0]->dataora_dimensione_caratteri }}">
                                   </div>
                                 </div>
                                 <div class="row tempidistop">
@@ -69,17 +69,17 @@
                                       <div class="form-group input-group">
                                         <input style="margin-left: 15px" name="titoloEvento_1" type="text" class="form-control" id="titoloEvento_1" >
                                         <span style="padding: 0" class="input-group-addon">
-                                          <input class="form-control jscolor pull-right" id="colorEvento_1" name="colorEvento_1" value="{{ $settings[0]->colore }}" style="width: 80px">
+                                          <input class="form-control jscolor pull-right" id="colorEvento_1" name="colorEvento_1" value="{{ $settings[0]->titolo_colore }}" style="width: 80px">
                                         </span>
                                       </div>
                                   </div>
                                   <div class="col-md-2">
                                         <label style="margin-top: 7px;margin-bottom: 0;" class="indentazioneTitolo_1" >Indentazione </label>
-                                        <input name="indentazioneTitolo_1" type="text" class="form-control" id="indentazioneTitolo_1" value="{{ $settings[0]->indentazione }}">
+                                        <input name="indentazioneTitolo_1" type="text" class="form-control" id="indentazioneTitolo_1" value="{{ $settings[0]->titolo_indentazione }}">
                                   </div>
                                   <div class="col-md-2">
                                         <label  style="margin-top: 7px;margin-bottom: 0;"  class="sizefontTitolo_1" >FontSize </label>
-                                        <input name="sizefontTitolo_1" type="text" class="form-control" id="sizefontTitolo_1" value="{{ $settings[0]->dimensione_caratteri }}">
+                                        <input name="sizefontTitolo_1" type="text" class="form-control" id="sizefontTitolo_1" value="{{ $settings[0]->titolo_dimensione_caratteri }}">
                                   </div>
                                 </div>
                                 <div class="row">
@@ -94,17 +94,17 @@
                                       <div class="form-group input-group">
                                       <input style="margin-left: 15px" name="commentoUno_1" type="text" class="form-control" id="commentoUno_1" >
                                       <span style="padding: 0" class="input-group-addon">
-                                        <input class="form-control jscolor pull-right" id="colorCommenti_1" name="colorCommenti_1" value="{{ $settings[0]->colore }}" style="width: 80px">
+                                        <input class="form-control jscolor pull-right" id="colorCommenti_1" name="colorCommenti_1" value="{{ $settings[0]->commentouno_colore }}" style="width: 80px">
                                       </span>
                                       </div>
                                   </div>
                                   <div class="col-md-2">
                                         <label style="margin-top: 7px;margin-bottom: 0;"  class="indentazioneCommentoUno_1" >Indentazione </label>
-                                        <input name="indentazioneCommentoUno_1" type="text" class="form-control" id="indentazioneCommentoUno_1" value="{{ $settings[0]->indentazione }}" >
+                                        <input name="indentazioneCommentoUno_1" type="text" class="form-control" id="indentazioneCommentoUno_1" value="{{ $settings[0]->commentouno_indentazione }}" >
                                   </div>
                                   <div class="col-md-2">
                                         <label style="margin-top: 7px;margin-bottom: 0;"  class="sizefontCommentoUno_1" >FontSize </label>
-                                        <input name="sizefontCommentoUno_1" type="text" class="form-control" id="sizefontCommentoUno_1" value="{{ $settings[0]->dimensione_caratteri }}" >
+                                        <input name="sizefontCommentoUno_1" type="text" class="form-control" id="sizefontCommentoUno_1" value="{{ $settings[0]->commentouno_dimensione_caratteri }}" >
                                   </div>
                                 </div>
                                 <div class="row">
@@ -113,17 +113,17 @@
                                       <div class="form-group input-group">
                                       <input style="margin-left: 15px" name="commentoDue_1" type="text" class="form-control" id="commentoDue_1" >
                                       <span style="padding: 0" class="input-group-addon">
-                                        <input class="form-control jscolor pull-right" id="colorCommentiDue_1" name="colorCommentiDue_1" value="{{ $settings[0]->colore }}" style="width: 80px">
+                                        <input class="form-control jscolor pull-right" id="colorCommentiDue_1" name="colorCommentiDue_1" value="{{ $settings[0]->commentodue_colore }}" style="width: 80px">
                                       </span>
                                       </div>
                                   </div>
                                   <div class="col-md-2">
                                         <label style="margin-top: 7px;margin-bottom: 0;"  class="indentazioneCommentoDue_1" >Indentazione </label>
-                                        <input name="indentazioneCommentoDue_1" type="text" class="form-control" id="indentazioneCommentoDue_1" value="{{ $settings[0]->indentazione }}" >
+                                        <input name="indentazioneCommentoDue_1" type="text" class="form-control" id="indentazioneCommentoDue_1" value="{{ $settings[0]->commentodue_indentazione }}" >
                                   </div>
                                   <div class="col-md-2">
                                         <label  style="margin-top: 7px;margin-bottom: 0;"  class="sizefontCommentoDue_1" >FontSize </label>
-                                        <input name="sizefontCommentoDue_1" type="text" class="form-control" id="sizefontCommentoDue_1" value="{{ $settings[0]->dimensione_caratteri }}" >
+                                        <input name="sizefontCommentoDue_1" type="text" class="form-control" id="sizefontCommentoDue_1" value="{{ $settings[0]->commentodue_dimensione_caratteri }}" >
                                   </div>
                                 </div>
                                 <div class="row">
@@ -132,17 +132,17 @@
                                       <div class="form-group input-group">
                                       <input style="margin-left: 15px" name="commentoTre_1" type="text" class="form-control" id="commentoTre_1" >
                                       <span style="padding: 0" class="input-group-addon">
-                                        <input class="form-control jscolor pull-right" id="colorCommentiTre_1" name="colorCommentiTre_1" value="{{ $settings[0]->colore }}" style="width: 80px">
+                                        <input class="form-control jscolor pull-right" id="colorCommentiTre_1" name="colorCommentiTre_1" value="{{ $settings[0]->commentotre_colore }}" style="width: 80px">
                                       </span>
                                       </div>
                                   </div>
                                   <div class="col-md-2">
                                         <label style="margin-top: 7px;margin-bottom: 0;"  class="indentazioneCommentoTre_1" >Indentazione </label>
-                                        <input name="indentazioneCommentoTre_1" type="text" class="form-control" id="indentazioneCommentoTre_1" value="{{ $settings[0]->indentazione }}">
+                                        <input name="indentazioneCommentoTre_1" type="text" class="form-control" id="indentazioneCommentoTre_1" value="{{ $settings[0]->commentotre_indentazione }}">
                                   </div>
                                   <div class="col-md-2">
                                         <label  style="margin-top: 7px;margin-bottom: 0;"  style="margin-top: 7px;margin-bottom: 0;"  class="sizefontCommentoTre_1" >FontSize </label>
-                                        <input name="sizefontCommentoTre_1" type="text" class="form-control" id="sizefontCommentoTre_1" value="{{ $settings[0]->dimensione_caratteri }}" >
+                                        <input name="sizefontCommentoTre_1" type="text" class="form-control" id="sizefontCommentoTre_1" value="{{ $settings[0]->commentotre_dimensione_caratteri }}" >
                                   </div>
                                 </div>
                                 <div class="row">
@@ -162,7 +162,7 @@
                               </div>
                               </div>
 
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                 <label class="control-label" >Locandina </label>
                                 <div id="fileuploader_1" class="uploadzone">Upload</div>
                                 <div id="previewLocandina_1"></div>
