@@ -178,11 +178,12 @@
 
                           <div class="form-group col-lg-12">
                             <br><br>
-                            <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-check-circle" aria-hidden="true"></i> Salva</button>
+                            <button type="submit" id="btnSubmit" class="btn btn-primary btn-lg"><i class="fa fa-check-circle" aria-hidden="true"></i> Salva</button>
                           </div>
                       </form>
                 </div>
 
+                @include('admin.partials.saveloading')
 
 @endsection
 
@@ -192,6 +193,14 @@
 <script>
 
 $(function(){
+
+
+  $('button#btnSubmit').on('click', function(e) {
+
+      $('#myModal').modal();
+      // eventsvalidator
+
+  });
 
   var token = $('meta[name="_token"]').attr('content');
 
@@ -218,7 +227,18 @@ $(function(){
   });
 
   $( "input.data_evento_c" ).datepicker({
-      dateFormat: "dd-mm-yy"
+      dateFormat: "dd-mm-yy",
+      closeText: "Chiudi",
+    	prevText: "&#x3C;Prec",
+    	nextText: "Succ&#x3E;",
+    	currentText: "Oggi",
+    	monthNames: [ "Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno",
+    		"Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre" ],
+    	monthNamesShort: [ "Gen","Feb","Mar","Apr","Mag","Giu",
+    		"Lug","Ago","Set","Ott","Nov","Dic" ],
+    	dayNames: [ "Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato" ],
+    	dayNamesShort: [ "Dom","Lun","Mar","Mer","Gio","Ven","Sab" ],
+    	dayNamesMin: [ "Do","Lu","Ma","Me","Gi","Ve","Sa" ]
   });
 
 

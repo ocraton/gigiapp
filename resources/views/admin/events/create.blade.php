@@ -174,10 +174,12 @@
                           <div class="form-group col-lg-12">
                             <br><br>
                             <button type="button" id="addfieldsetbtn" class="btn btn-success btn-lg"><i class="fa fa-plus-circle" aria-hidden="true"></i> Aggiungi </button>
-                            <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-check-circle" aria-hidden="true"></i> Salva</button>
+                            <button type="submit" id="btnSubmit" class="btn btn-primary btn-lg"><i class="fa fa-check-circle" aria-hidden="true"></i> Salva</button>
                           </div>
                       </form>
                 </div>
+
+                @include('admin.partials.saveloading')
 
 
 @endsection
@@ -205,6 +207,12 @@ $(function(){
       }
   });
 
+  $('button#btnSubmit').on('click', function(e) {
+
+      $('#myModal').modal();
+      // eventsvalidator
+
+  });
 
   //clona il pannello di input riaggiornando gli id e i name
   $('button#addfieldsetbtn').on('click', function(e) {
@@ -221,9 +229,9 @@ $(function(){
 
         // id data evento
         clonefield.find("input[id^='dataEvento_']").prop('id', 'dataEvento_'+curr_fieldset_index ).prop('name', 'dataEvento_'+curr_fieldset_index ).val('');
-        clonefield.find("input[id^='indentazioneDataEvento_']").prop('id', 'indentazioneDataEvento_'+curr_fieldset_index ).prop('name', 'indentazioneDataEvento_'+curr_fieldset_index ).val('{{ $settings[0]->indentazione }}');
-        clonefield.find("input[id^='sizefontDataEvento_']").prop('id', 'sizefontDataEvento_'+curr_fieldset_index ).prop('name', 'sizefontDataEvento_'+curr_fieldset_index ).val('{{ $settings[0]->dimensione_caratteri }}');
-        clonefield.find("input[id^='colorData_']").prop('id', 'colorData_'+curr_fieldset_index ).prop('name', 'colorData_'+curr_fieldset_index ).val('{{ $settings[0]->colore }}');
+        clonefield.find("input[id^='indentazioneDataEvento_']").prop('id', 'indentazioneDataEvento_'+curr_fieldset_index ).prop('name', 'indentazioneDataEvento_'+curr_fieldset_index ).val('{{ $settings[0]->dataora_indentazione }}');
+        clonefield.find("input[id^='sizefontDataEvento_']").prop('id', 'sizefontDataEvento_'+curr_fieldset_index ).prop('name', 'sizefontDataEvento_'+curr_fieldset_index ).val('{{ $settings[0]->dataora_dimensione_caratteri }}');
+        clonefield.find("input[id^='colorData_']").prop('id', 'colorData_'+curr_fieldset_index ).prop('name', 'colorData_'+curr_fieldset_index ).val('{{ $settings[0]->dataora_colore }}');
         // ora evento
         clonefield.find("input[id^='oraEvento_']").prop('id', 'oraEvento_'+curr_fieldset_index ).prop('name', 'oraEvento_'+curr_fieldset_index ).val('');
         // data/ora visibile
@@ -251,8 +259,8 @@ $(function(){
 
         clonefield.find("input[id^='commentoTre_']").prop('id', 'commentoTre_'+curr_fieldset_index ).prop('name', 'commentoTre_'+curr_fieldset_index ).val('');
         clonefield.find("input[id^='colorCommentiTre_']").prop('id', 'colorCommentiTre_'+curr_fieldset_index ).prop('name', 'colorCommentiTre_'+curr_fieldset_index ).val('{{ $settings[0]->commentotre_colore }}');
-        clonefield.find("input[id^='indentazioneCommentoTre_']").prop('id', 'indentazioneCommentoTre_'+curr_fieldset_index ).prop('name', 'indentazioneCommentoTre_'+curr_fieldset_index ).val('{{ $settings[0]->indentazione }}');
-        clonefield.find("input[id^='sizefontCommentoTre_']").prop('id', 'sizefontCommentoTre_'+curr_fieldset_index ).prop('name', 'sizefontCommentoTre_'+curr_fieldset_index ).val('{{ $settings[0]->dimensione_caratteri }}');
+        clonefield.find("input[id^='indentazioneCommentoTre_']").prop('id', 'indentazioneCommentoTre_'+curr_fieldset_index ).prop('name', 'indentazioneCommentoTre_'+curr_fieldset_index ).val('{{ $settings[0]->commentotre_indentazione }}');
+        clonefield.find("input[id^='sizefontCommentoTre_']").prop('id', 'sizefontCommentoTre_'+curr_fieldset_index ).prop('name', 'sizefontCommentoTre_'+curr_fieldset_index ).val('{{ $settings[0]->commentotre_dimensione_caratteri }}');
 
         clonefield.find("input[id^='fullScreen_']").prop('id', 'fullScreen_'+curr_fieldset_index ).prop('name', 'fullScreen_'+curr_fieldset_index ).val('1');
         clonefield.find("input[id^='tempoStopDef_']").prop('id', 'tempoStopDef_'+curr_fieldset_index ).prop('name', 'tempoStopDef_'+curr_fieldset_index ).val('');
@@ -293,13 +301,35 @@ $(function(){
         });
 
         $( "input.data_evento_c" ).datepicker({
-            dateFormat: "dd-mm-yy"
+            dateFormat: "dd-mm-yy",
+            closeText: "Chiudi",
+          	prevText: "&#x3C;Prec",
+          	nextText: "Succ&#x3E;",
+          	currentText: "Oggi",
+          	monthNames: [ "Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno",
+          		"Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre" ],
+          	monthNamesShort: [ "Gen","Feb","Mar","Apr","Mag","Giu",
+          		"Lug","Ago","Set","Ott","Nov","Dic" ],
+          	dayNames: [ "Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato" ],
+          	dayNamesShort: [ "Dom","Lun","Mar","Mer","Gio","Ven","Sab" ],
+          	dayNamesMin: [ "Do","Lu","Ma","Me","Gi","Ve","Sa" ]
         });
 
   });
 
   $( "input.data_evento_c" ).datepicker({
-      dateFormat: "dd-mm-yy"
+      dateFormat: "dd-mm-yy",
+      closeText: "Chiudi",
+    	prevText: "&#x3C;Prec",
+    	nextText: "Succ&#x3E;",
+    	currentText: "Oggi",
+    	monthNames: [ "Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno",
+    		"Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre" ],
+    	monthNamesShort: [ "Gen","Feb","Mar","Apr","Mag","Giu",
+    		"Lug","Ago","Set","Ott","Nov","Dic" ],
+    	dayNames: [ "Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato" ],
+    	dayNamesShort: [ "Dom","Lun","Mar","Mer","Gio","Ven","Sab" ],
+    	dayNamesMin: [ "Do","Lu","Ma","Me","Gi","Ve","Sa" ]
   });
 
 

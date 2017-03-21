@@ -54,6 +54,10 @@
 			</table>
 	</div>
 </div>
+
+@include('admin.partials.destroyeventoloading')
+
+
 @endsection
 
 @section('scripts')
@@ -67,6 +71,7 @@ $( document ).ready(function() {
       var thisbtn = $(this);
       bootbox.confirm("<h3>Cancellare evento: " +usrnm+ "? </h3>", function(result) {
         if(result){
+            $('#myModal').modal();
             var sbtfrm = thisbtn.closest('form').attr('id');
             $('form#'+sbtfrm).submit();
         }
