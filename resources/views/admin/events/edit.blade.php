@@ -29,7 +29,7 @@
                                     <div class="col-md-4">
                                       <label class="control-label" >Data </label>
                                       <div class="form-group input-group">
-                                      <input style="margin-left: 15px" value="{{ $evento->dataEvento }}" id="dataEvento_1" name="dataEvento_1" type="text" placeholder="gg-mm-yyyy" class="form-control data_evento_c" >
+                                      <input style="margin-left: 15px" value="{{ Carbon\Carbon::parse($evento->dataEvento)->format('d-m-Y') }}" id="dataEvento_1" name="dataEvento_1" type="text" placeholder="gg-mm-yyyy" class="form-control data_evento_c" >
                                       <span style="padding: 0" class="input-group-addon">
                                         <input class="form-control jscolor pull-right" id="colorData_1" type="text" name="colorData_1" value="{{ $evento->colorData }}" style="width: 80px">
                                       </span>

@@ -36,7 +36,7 @@
 					@foreach($eventi as $evento)
 					<tr>
             <td>{{ $evento->titoloEvento }} <div style="width: 60px; height: 10px;background-color:#{{ $evento->colorEvento }}"> </div></td>
-            <td>{{ $evento->dataEvento }} <div style="width: 60px; height: 10px;background-color:#{{ $evento->colorData }}"> </div></td>
+            <td>{{ Carbon\Carbon::parse($evento->dataEvento)->format('d/m/Y') }} <div style="width: 60px; height: 10px;background-color:#{{ $evento->colorData }}"> </div></td>
             <td>{{ $evento->oraEvento }}</td>
             <td>{{ $evento->dataOraVisibile }}</td>
             <td><img width="200px" src="/uploads/{{ $evento->locandina }}"></td>

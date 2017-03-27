@@ -42,10 +42,22 @@ class EventController extends Controller {
 
 				if($currIndex == $keyexpl[1])
 				{
-						$eventinput[$currIndex][$keyexpl[0]] = $value;
+						if($keyexpl[0] == 'dataEvento') {
+								$oraora = 'oraEvento_'.$currIndex;
+							  $eventinput[$currIndex][$keyexpl[0]] = Carbon::parse($value.' '.$request->$oraora);
+							}
+							else {
+								$eventinput[$currIndex][$keyexpl[0]] = $value;
+							}
 				} else {
-						$currIndex = $keyexpl[1];
-						$eventinput[$currIndex][$keyexpl[0]] = $value;
+							$currIndex = $keyexpl[1];
+							if($keyexpl[0] == 'dataEvento') {
+								$oraora = 'oraEvento_'.$currIndex;
+								$eventinput[$currIndex][$keyexpl[0]] = Carbon::parse($value.' '.$request->$oraora);
+							}
+							else {
+								$eventinput[$currIndex][$keyexpl[0]] = $value;
+							}
 				}
 
 		}
@@ -74,7 +86,7 @@ class EventController extends Controller {
 
 		try {
 			$evento = Event::findOrFail($id);
-			$evento->dataEvento = $request->dataEvento_1 ;
+			$evento->dataEvento = Carbon::parse($request->dataEvento_1.' '.$request->oraEvento_1);
 			$evento->colorData = $request->colorData_1;
 			$evento->oraEvento = $request->oraEvento_1 ;
 			$evento->dataOraVisibile = empty($request->dataOraVisibile_1) ? 0 : 1;

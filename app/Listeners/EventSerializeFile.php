@@ -34,8 +34,8 @@ class EventSerializeFile
         $separatore = '||';
         $eventi = Event::orderBy('dataEvento', 'desc')->get();
         $setting = Setting::all();
-        setlocale(LC_ALL, 'Italian'); //windows
-        // setlocale(LC_TIME, 'it_IT'); // linux
+        // setlocale(LC_ALL, 'Italian'); //windows
+        setlocale(LC_TIME, 'it_IT'); // linux
         foreach ($eventi as $evento) {
 
           // impostazioni globali
@@ -79,7 +79,7 @@ class EventSerializeFile
 
         Storage::disk('public')->put('info.txt', $datastring);
 
-        // shell_exec('');
+        shell_exec('');
 
     }
 }

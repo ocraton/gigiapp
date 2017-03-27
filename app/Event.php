@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -43,7 +44,7 @@ class Event extends Model
 			'locandina',
 
     ];
-
+	
 
 
 
