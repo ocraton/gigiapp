@@ -32,7 +32,7 @@ class EventSerializeFile
     {
         $datastring = '';
         $separatore = '||';
-        $eventi = Event::orderBy('dataEvento', 'desc')->get();
+        $eventi = Event::orderBy('dataEvento', 'asc')->get();
         $setting = Setting::all();
         // setlocale(LC_ALL, 'Italian'); //windows
         setlocale(LC_TIME, 'it_IT'); // linux
@@ -47,7 +47,7 @@ class EventSerializeFile
                          $evento->tempoStopMenodue.$separatore.
                          $evento->tempoStopMenotre.$separatore.
                          $evento->visualizzaOgni.$separatore.
-                         $evento->dataEvento.$separatore.
+                         Carbon::parse($evento->dataEvento)->format('d-m-Y').$separatore.
                          $evento->dataOraVisibile.$separatore.
                          $evento->locandina.$separatore.
                          $evento->fullScreen.$separatore.

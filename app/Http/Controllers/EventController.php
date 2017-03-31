@@ -19,7 +19,7 @@ class EventController extends Controller {
 	public function index()
 	{
 		$this->deleteOldEvents();
-		$eventi = Event::orderBy('dataEvento', 'desc')->get();
+		$eventi = Event::orderBy('dataEvento', 'asc')->get();
 		event(new SerializeFile());
 		return view('admin.events.index', compact('eventi'));
 	}
