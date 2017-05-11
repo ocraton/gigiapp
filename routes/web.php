@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-  return redirect('/events/create');
+  return redirect('/events');
 });
 
 Route::get('/events', 'EventController@index');

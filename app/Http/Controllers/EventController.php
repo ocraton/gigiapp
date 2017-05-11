@@ -6,7 +6,9 @@ use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use App\Events\SerializeFile;
+use App\Events\SynchronizeInfoToDb;
 use Storage;
+
 
 
 class EventController extends Controller {
@@ -19,13 +21,17 @@ class EventController extends Controller {
 	public function index()
 	{
 		$this->deleteOldEvents();
-		$eventi = Event::orderBy('dataEvento', 'asc')->get();
+		event(new SynchronizeInfoToDb());
 		event(new SerializeFile());
+		$eventi = Event::orderBy('dataEvento', 'asc')->get();
 		return view('admin.events.index', compact('eventi'));
 	}
 
+
 	public function create()
 	{
+		event(new SynchronizeInfoToDb());
+		event(new SerializeFile());
 		$settings = Setting::all();
 		return view('admin.events.create', compact('settings'));
 	}

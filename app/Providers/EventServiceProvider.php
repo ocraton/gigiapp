@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SerializeFile' => [
             'App\Listeners\EventSerializeFile',
         ],
+        'App\Events\SynchronizeInfoToDb' => [
+            'App\Listeners\EventSynchronizeInfoToDb',
+        ],
     ];
 
     /**
