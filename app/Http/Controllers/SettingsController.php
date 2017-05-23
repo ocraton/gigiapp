@@ -6,6 +6,7 @@ use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
 use App\Events\SerializeFile;
+use App\Events\SynchronizeInfoToDb;
 
 class SettingsController extends Controller {
 
@@ -16,7 +17,7 @@ class SettingsController extends Controller {
 
 	public function edit()
 	{
-		$settings =  Setting::find(1);
+		$settings =  Setting::findOrFail(1);
 		return view('admin.settings.edit', compact('settings'));
 	}
 
