@@ -24,7 +24,7 @@
                   <div class="form-group col-lg-4">
                     <div class="form-group">
                         <label>Spaziatura tra eventi</label>
-                        {!! Form::text('spaziatura_eventi', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('spaziatura_eventi', null, ['class' => 'form-control forceasnumber']) !!}
                         <p class="pull-right">in pixel</p>
                     </div>
                   </div>
@@ -48,14 +48,14 @@
                                 <div class="form-group col-lg-4">
                                     <div class="form-group">
                                           <label>Indentazione</label>
-                                          {!! Form::text('dataora_indentazione', null, ['class' => 'form-control']) !!}
+                                          {!! Form::text('dataora_indentazione', null, ['class' => 'form-control forceasnumber']) !!}
                                           <p class="pull-right">in pixel</p>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <div class="form-group">
                                         <label>FontSize</label>
-                                        {!! Form::text('dataora_dimensione_caratteri', null, ['class' => 'form-control']) !!}
+                                        {!! Form::text('dataora_dimensione_caratteri', null, ['class' => 'form-control forceasnumber']) !!}
                                         <p class="pull-right">in pixel</p>
                                     </div>
                                 </div>
@@ -81,14 +81,14 @@
                                 <div class="form-group col-lg-4">
                                     <div class="form-group">
                                           <label>Indentazione</label>
-                                          {!! Form::text('titolo_indentazione', null, ['class' => 'form-control']) !!}
+                                          {!! Form::text('titolo_indentazione', null, ['class' => 'form-control forceasnumber']) !!}
                                           <p class="pull-right">in pixel</p>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <div class="form-group">
                                         <label>FontSize</label>
-                                        {!! Form::text('titolo_dimensione_caratteri', null, ['class' => 'form-control']) !!}
+                                        {!! Form::text('titolo_dimensione_caratteri', null, ['class' => 'form-control forceasnumber']) !!}
                                         <p class="pull-right">in pixel</p>
                                     </div>
                                 </div>
@@ -117,14 +117,14 @@
                                 <div class="form-group col-lg-4">
                                     <div class="form-group">
                                           <label>Indentazione</label>
-                                          {!! Form::text('commentouno_indentazione', null, ['class' => 'form-control']) !!}
+                                          {!! Form::text('commentouno_indentazione', null, ['class' => 'form-control forceasnumber']) !!}
                                           <p class="pull-right">in pixel</p>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <div class="form-group">
                                         <label>FontSize</label>
-                                        {!! Form::text('commentouno_dimensione_caratteri', null, ['class' => 'form-control']) !!}
+                                        {!! Form::text('commentouno_dimensione_caratteri', null, ['class' => 'form-control forceasnumber']) !!}
                                         <p class="pull-right">in pixel</p>
                                     </div>
                                 </div>
@@ -150,14 +150,14 @@
                                 <div class="form-group col-lg-4">
                                     <div class="form-group">
                                           <label>Indentazione</label>
-                                          {!! Form::text('commentodue_indentazione', null, ['class' => 'form-control']) !!}
+                                          {!! Form::text('commentodue_indentazione', null, ['class' => 'form-control forceasnumber']) !!}
                                           <p class="pull-right">in pixel</p>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <div class="form-group">
                                         <label>FontSize</label>
-                                        {!! Form::text('commentodue_dimensione_caratteri', null, ['class' => 'form-control']) !!}
+                                        {!! Form::text('commentodue_dimensione_caratteri', null, ['class' => 'form-control forceasnumber']) !!}
                                         <p class="pull-right">in pixel</p>
                                     </div>
                                 </div>
@@ -186,14 +186,14 @@
                                 <div class="form-group col-lg-4">
                                     <div class="form-group">
                                           <label>Indentazione</label>
-                                          {!! Form::text('commentotre_indentazione', null, ['class' => 'form-control']) !!}
+                                          {!! Form::text('commentotre_indentazione', null, ['class' => 'form-control forceasnumber']) !!}
                                           <p class="pull-right">in pixel</p>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <div class="form-group">
                                         <label>FontSize</label>
-                                        {!! Form::text('commentotre_dimensione_caratteri', null, ['class' => 'form-control']) !!}
+                                        {!! Form::text('commentotre_dimensione_caratteri', null, ['class' => 'form-control forceasnumber']) !!}
                                         <p class="pull-right">in pixel</p>
                                     </div>
                                 </div>
@@ -215,5 +215,18 @@
 
 
 @section('scripts')
+<script>
 
+$(function(){
+    // forza i caratteri a numerici
+    $("input.forceasnumber").on("input", function(evt) {
+       var self = $(this);
+       self.val(self.val().replace(/[^0-9]/g, ''));
+       if (evt.which != 46 && (evt.which < 48 || evt.which > 57))
+       {
+         evt.preventDefault();
+       }
+     });
+});
+</script>
 @endsection

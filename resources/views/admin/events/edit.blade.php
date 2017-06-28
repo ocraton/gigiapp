@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="col-md-2">
                                       <label class="control-label" >Ora </label>
-                                      <input id="oraEvento_1" name="oraEvento_1" value="{{ $evento->oraEvento }}" type="text" placeholder="h:m" class="form-control " >
+                                      <input id="oraEvento_1" name="oraEvento_1" value="{{ $evento->oraEvento }}" type="text" placeholder="h:m" class="form-control forceashour" >
                                     </div>
                                     <div class="col-md-2">
                                       <br>
@@ -46,25 +46,25 @@
                                     </div>
                                     <div class="col-md-2">
                                           <label style="margin-top: 7px;margin-bottom: 0;" class="indentazioneDataEvento_1" >Indentazione </label>
-                                          <input name="indentazioneDataEvento_1" type="text" class="form-control" id="indentazioneDataEvento_1" value="{{ $evento->indentazioneDataEvento }}">
+                                          <input name="indentazioneDataEvento_1" type="text" class="form-control forceasnumber" id="indentazioneDataEvento_1" value="{{ $evento->indentazioneDataEvento }}">
                                     </div>
                                     <div class="col-md-2">
                                           <label  style="margin-top: 7px;margin-bottom: 0;"  class="sizefontDataEvento_1" >FontSize </label>
-                                          <input name="sizefontDataEvento_1" type="text" class="form-control" id="sizefontDataEvento_1" value="{{ $evento->sizefontDataEvento }}">
+                                          <input name="sizefontDataEvento_1" type="text" class="form-control forceasnumber" id="sizefontDataEvento_1" value="{{ $evento->sizefontDataEvento }}">
                                     </div>
                                   </div>
                                 <div class="row tempidistop">
                                   <div class="col-md-4">
                                     <label class="control-label" >Tempo di stop ( -1 ) </label>
-                                    <input id="tempoStopMenouno_1" name="tempoStopMenouno_1" type="text" class="form-control" value="{{ $evento->tempoStopMenouno }}" >
+                                    <input id="tempoStopMenouno_1" name="tempoStopMenouno_1" type="text" class="form-control forceasnumber" value="{{ $evento->tempoStopMenouno }}" >
                                   </div>
                                   <div class="col-md-4">
                                     <label class="control-label" >Tempo di stop ( -2 ) </label>
-                                    <input id="tempoStopMenodue_1" name="tempoStopMenodue_1" type="text" class="form-control " value="{{ $evento->tempoStopMenodue }}">
+                                    <input id="tempoStopMenodue_1" name="tempoStopMenodue_1" type="text" class="form-control  forceasnumber" value="{{ $evento->tempoStopMenodue }}">
                                   </div>
                                   <div class="col-md-4">
                                     <label class="control-label" >Tempo di stop ( -3 ) </label>
-                                    <input id="tempoStopMenotre_1" name="tempoStopMenotre_1" type="text" class="form-control " value="{{ $evento->tempoStopMenotre }}">
+                                    <input id="tempoStopMenotre_1" name="tempoStopMenotre_1" type="text" class="form-control forceasnumber " value="{{ $evento->tempoStopMenotre }}">
                                   </div>
                                 </div>
                               <div class="row">
@@ -79,11 +79,11 @@
                                 </div>
                                 <div class="col-md-2">
                                       <label style="margin-top: 7px;margin-bottom: 0;" class="indentazioneTitolo_1" >Indentazione </label>
-                                      <input name="indentazioneTitolo_1" type="text" class="form-control" id="indentazioneTitolo_1" value="{{ $evento->indentazioneTitolo }}">
+                                      <input name="indentazioneTitolo_1" type="text" class="form-control forceasnumber" id="indentazioneTitolo_1" value="{{ $evento->indentazioneTitolo }}">
                                 </div>
                                 <div class="col-md-2">
                                       <label  style="margin-top: 7px;margin-bottom: 0;"  class="sizefontTitolo_1" >FontSize </label>
-                                      <input name="sizefontTitolo_1" type="text" class="form-control" id="sizefontTitolo_1" value="{{ $evento->sizefontTitolo }}">
+                                      <input name="sizefontTitolo_1" type="text" class="form-control forceasnumber" id="sizefontTitolo_1" value="{{ $evento->sizefontTitolo }}">
                                 </div>
                               </div>
                               <div class="row">
@@ -104,11 +104,11 @@
                                 </div>
                                 <div class="col-md-2">
                                       <label style="margin-top: 7px;margin-bottom: 0;"  class="indentazioneCommentoUno_1" >Indentazione </label>
-                                      <input name="indentazioneCommentoUno_1" type="text" class="form-control" id="indentazioneCommentoUno_1" value="{{ $evento->indentazioneCommentoUno }}" >
+                                      <input name="indentazioneCommentoUno_1" type="text" class="form-control forceasnumber" id="indentazioneCommentoUno_1" value="{{ $evento->indentazioneCommentoUno }}" >
                                 </div>
                                 <div class="col-md-2">
                                       <label style="margin-top: 7px;margin-bottom: 0;"  class="sizefontCommentoUno_1" >FontSize </label>
-                                      <input name="sizefontCommentoUno_1" type="text" class="form-control" id="sizefontCommentoUno_1" value="{{ $evento->sizefontCommentoUno }}" >
+                                      <input name="sizefontCommentoUno_1" type="text" class="form-control forceasnumber" id="sizefontCommentoUno_1" value="{{ $evento->sizefontCommentoUno }}" >
                                 </div>
                               </div>
                               <div class="row">
@@ -123,11 +123,11 @@
                                 </div>
                                 <div class="col-md-2">
                                       <label style="margin-top: 7px;margin-bottom: 0;"  class="indentazioneCommentoDue_1" >Indentazione </label>
-                                      <input name="indentazioneCommentoDue_1" type="text" class="form-control" id="indentazioneCommentoDue_1" value="{{ $evento->indentazioneCommentoDue }}" >
+                                      <input name="indentazioneCommentoDue_1" type="text" class="form-control forceasnumber" id="indentazioneCommentoDue_1" value="{{ $evento->indentazioneCommentoDue }}" >
                                 </div>
                                 <div class="col-md-2">
                                       <label  style="margin-top: 7px;margin-bottom: 0;"  class="sizefontCommentoDue_1" >FontSize </label>
-                                      <input name="sizefontCommentoDue_1" type="text" class="form-control" id="sizefontCommentoDue_1" value="{{ $evento->sizefontCommentoDue }}" >
+                                      <input name="sizefontCommentoDue_1" type="text" class="form-control forceasnumber" id="sizefontCommentoDue_1" value="{{ $evento->sizefontCommentoDue }}" >
                                 </div>
                               </div>
                               <div class="row">
@@ -142,11 +142,11 @@
                                 </div>
                                 <div class="col-md-2">
                                       <label style="margin-top: 7px;margin-bottom: 0;"  class="indentazioneCommentoTre_1" >Indentazione </label>
-                                      <input name="indentazioneCommentoTre_1" type="text" class="form-control" id="indentazioneCommentoTre_1" value="{{ $evento->indentazioneCommentoTre }}">
+                                      <input name="indentazioneCommentoTre_1" type="text" class="form-control forceasnumber" id="indentazioneCommentoTre_1" value="{{ $evento->indentazioneCommentoTre }}">
                                 </div>
                                 <div class="col-md-2">
                                       <label  style="margin-top: 7px;margin-bottom: 0;"  style="margin-top: 7px;margin-bottom: 0;"  class="sizefontCommentoTre_1" >FontSize </label>
-                                      <input name="sizefontCommentoTre_1" type="text" class="form-control" id="sizefontCommentoTre_1" value="{{ $evento->sizefontCommentoTre }}" >
+                                      <input name="sizefontCommentoTre_1" type="text" class="form-control forceasnumber" id="sizefontCommentoTre_1" value="{{ $evento->sizefontCommentoTre }}" >
                                 </div>
                               </div>
                               <div class="row">
@@ -157,11 +157,11 @@
                                   </div>
                                   <div class="col-md-4">
                                     <label class="control-label" >Tempo di stop </label>
-                                    <input name="tempoStopDef_1" type="text" class="form-control" id="tempoStopDef_1" value="{{ $evento->tempoStopDef }}">
+                                    <input name="tempoStopDef_1" type="text" class="form-control forceasnumber" id="tempoStopDef_1" value="{{ $evento->tempoStopDef }}">
                                   </div>
                                   <div class="col-md-4">
                                     <label class="control-label" >Visualizza ogni </label>
-                                    <input name="visualizzaOgni_1" type="text" class="form-control" id="visualizzaOgni_1" value="{{ $evento->visualizzaOgni }}">
+                                    <input name="visualizzaOgni_1" type="text" class="form-control forceasnumber" id="visualizzaOgni_1" value="{{ $evento->visualizzaOgni }}">
                                   </div>
                               </div>
                               </div>
@@ -190,6 +190,11 @@
 
 @section('scripts')
 <script src="{{ asset('/js/jquery-upload-file-master/js/jquery.uploadfile.min.js') }} "></script>
+<script src="{{ asset('/js/inputmask/inputmask.js') }} "></script>
+<script src="{{ asset('/js/inputmask/inputmask.date.extensions.js') }} "></script>
+<script src="{{ asset('/js/inputmask/inputmask.extensions.js') }} "></script>
+<script src="{{ asset('/js/inputmask/inputmask.numeric.extensions.js') }} "></script>
+<script src="{{ asset('/js/inputmask/jquery.inputmask.js') }} "></script>
 <script>
 
 $(function(){
@@ -200,6 +205,21 @@ $(function(){
       $('#myModal').modal();
       // eventsvalidator
 
+  });
+
+  // forza i caratteri a numerici
+  $("input.forceasnumber").on("input", function(evt) {
+     var self = $(this);
+     self.val(self.val().replace(/[^0-9]/g, ''));
+     if (evt.which != 46 && (evt.which < 48 || evt.which > 57))
+     {
+       evt.preventDefault();
+     }
+   });
+  //  forza formato orario
+  $("input.forceashour").inputmask("99:99", {
+        placeholder: "HH:MM",
+        hourFormat: 24
   });
 
   var token = $('meta[name="_token"]').attr('content');

@@ -42,7 +42,7 @@ class EventSynchronizeInfoToDb
 
           Event::truncate();
 
-          $rows =  explode("\r\n", $contents);
+          $rows =  explode("\n", $contents);
           foreach ($rows as $fieldsrow) {
             $item = explode("||", $fieldsrow);
             $collection->push($item);
